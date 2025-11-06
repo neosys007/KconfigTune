@@ -1,0 +1,3476 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> input
+Rule 1     input -> input mainmenu_stmt
+Rule 2     input -> input config_stmt
+Rule 3     input -> input menu_stmt
+Rule 4     input -> input if_stmt
+Rule 5     input -> input choice_stmt
+Rule 6     input -> input groupend_stmt
+Rule 7     input -> input comment_stmt
+Rule 8     input -> input source_stmt
+Rule 9     input -> input type_stmt
+Rule 10    input -> input depends_stmt
+Rule 11    input -> input select_imply_stmt
+Rule 12    input -> input prompt_stmt
+Rule 13    input -> input default_stmt
+Rule 14    input -> input help_stmt
+Rule 15    input -> input range_stmt
+Rule 16    input -> input visible_stmt
+Rule 17    input -> input modules_stmt
+Rule 18    input -> input optional_stmt
+Rule 19    input -> input path_stmt
+Rule 20    input -> input endpath_stmt
+Rule 21    input -> empty
+Rule 22    path_stmt -> PATH QUOTE_WORD EOL
+Rule 23    endpath_stmt -> ENDPATH EOL
+Rule 24    mainmenu_stmt -> MAINMENU QUOTE_WORD EOL
+Rule 25    config_stmt -> CONFIG WORD EOL
+Rule 26    config_stmt -> MENUCONFIG WORD EOL
+Rule 27    comment_stmt -> COMMENT QUOTE_WORD EOL
+Rule 28    menu_stmt -> MENU QUOTE_WORD EOL
+Rule 29    if_stmt -> IF expr EOL
+Rule 30    choice_stmt -> CHOICE WORD EOL
+Rule 31    choice_stmt -> CHOICE EOL
+Rule 32    groupend_stmt -> ENDMENU EOL
+Rule 33    groupend_stmt -> ENDIF EOL
+Rule 34    groupend_stmt -> ENDCHOICE EOL
+Rule 35    prompt_stmt_opt -> QUOTE_WORD if_expr
+Rule 36    prompt_stmt_opt -> empty
+Rule 37    type_stmt -> INT prompt_stmt_opt EOL
+Rule 38    type_stmt -> HEX prompt_stmt_opt EOL
+Rule 39    type_stmt -> STRING prompt_stmt_opt EOL
+Rule 40    type_stmt -> BOOL prompt_stmt_opt EOL
+Rule 41    type_stmt -> TRISTATE prompt_stmt_opt EOL
+Rule 42    prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL
+Rule 43    help_stmt -> HELP HELP_CONTEXT EOL
+Rule 44    help_stmt -> HELP HELP_CONTEXT
+Rule 45    depends_stmt -> DEPENDS ON expr EOL
+Rule 46    select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL
+Rule 47    select_imply_stmt -> SELECT WORD if_expr EOL
+Rule 48    select_imply_stmt -> IMPLY WORD if_expr EOL
+Rule 49    range_stmt -> RANGE symbol symbol if_expr EOL
+Rule 50    optional_stmt -> OPTIONAL EOL
+Rule 51    default_stmt -> DEFAULT expr if_expr EOL
+Rule 52    default_stmt -> DEF_BOOL expr if_expr EOL
+Rule 53    default_stmt -> DEF_TRISTATE expr if_expr EOL
+Rule 54    visible_stmt -> VISIBILE if_expr EOL
+Rule 55    modules_stmt -> MODULES EOL
+Rule 56    source_stmt -> SOURCE QUOTE_WORD EOL
+Rule 57    symbol -> WORD
+Rule 58    symbol -> QUOTE_WORD
+Rule 59    symbol -> SP_WORD
+Rule 60    if_expr -> IF expr
+Rule 61    if_expr -> empty
+Rule 62    expr -> symbol
+Rule 63    expr -> symbol LESS symbol
+Rule 64    expr -> symbol LESS_EQUAL symbol
+Rule 65    expr -> symbol GREATER symbol
+Rule 66    expr -> symbol GREATER_EQUAL symbol
+Rule 67    expr -> symbol EQUAL symbol
+Rule 68    expr -> symbol UNEQUAL symbol
+Rule 69    expr -> NOT expr
+Rule 70    expr -> OPEN_PARENT expr CLOSE_PARENT
+Rule 71    expr -> expr OR expr
+Rule 72    expr -> expr AND expr
+Rule 73    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 72
+BOOL                 : 40
+CHOICE               : 30 31
+CLOSE_PARENT         : 70
+COMMENT              : 27
+CONFIG               : 25
+DEFAULT              : 51
+DEF_BOOL             : 52
+DEF_TRISTATE         : 53
+DEPENDS              : 45
+ENDCHOICE            : 34
+ENDIF                : 33
+ENDMENU              : 32
+ENDPATH              : 23
+EOL                  : 22 23 24 25 26 27 28 29 30 31 32 33 34 37 38 39 40 41 42 43 45 46 47 48 49 50 51 52 53 54 55 56
+EQUAL                : 67
+GREATER              : 65
+GREATER_EQUAL        : 66
+HELP                 : 43 44
+HELP_CONTEXT         : 43 44
+HEX                  : 38
+IF                   : 29 60
+IMPLY                : 48
+INT                  : 37
+LESS                 : 63
+LESS_EQUAL           : 64
+MAINMENU             : 24
+MENU                 : 28
+MENUCONFIG           : 26
+MODULES              : 55
+NOT                  : 69
+ON                   : 45
+OPEN_PARENT          : 70
+OPTIONAL             : 50
+OR                   : 71
+PATH                 : 22
+PROMPT               : 42
+QUOTE_WORD           : 22 24 27 28 35 42 46 56 58
+RANGE                : 49
+SELECT               : 46 47
+SOURCE               : 56
+SP_WORD              : 59
+STRING               : 39
+TRISTATE             : 41
+UNEQUAL              : 68
+VISIBILE             : 54
+WORD                 : 25 26 30 47 48 57
+error                : 
+
+Nonterminals, with rules where they appear
+
+choice_stmt          : 5
+comment_stmt         : 7
+config_stmt          : 2
+default_stmt         : 13
+depends_stmt         : 10
+empty                : 21 36 61
+endpath_stmt         : 20
+expr                 : 29 45 51 52 53 60 69 70 71 71 72 72
+groupend_stmt        : 6
+help_stmt            : 14
+if_expr              : 35 42 46 47 48 49 51 52 53 54
+if_stmt              : 4
+input                : 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 0
+mainmenu_stmt        : 1
+menu_stmt            : 3
+modules_stmt         : 17
+optional_stmt        : 18
+path_stmt            : 19
+prompt_stmt          : 12
+prompt_stmt_opt      : 37 38 39 40 41
+range_stmt           : 15
+select_imply_stmt    : 11
+source_stmt          : 8
+symbol               : 49 49 62 63 63 64 64 65 65 66 66 67 67 68 68
+type_stmt            : 9
+visible_stmt         : 16
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . input
+    (1) input -> . input mainmenu_stmt
+    (2) input -> . input config_stmt
+    (3) input -> . input menu_stmt
+    (4) input -> . input if_stmt
+    (5) input -> . input choice_stmt
+    (6) input -> . input groupend_stmt
+    (7) input -> . input comment_stmt
+    (8) input -> . input source_stmt
+    (9) input -> . input type_stmt
+    (10) input -> . input depends_stmt
+    (11) input -> . input select_imply_stmt
+    (12) input -> . input prompt_stmt
+    (13) input -> . input default_stmt
+    (14) input -> . input help_stmt
+    (15) input -> . input range_stmt
+    (16) input -> . input visible_stmt
+    (17) input -> . input modules_stmt
+    (18) input -> . input optional_stmt
+    (19) input -> . input path_stmt
+    (20) input -> . input endpath_stmt
+    (21) input -> . empty
+    (73) empty -> .
+
+    MAINMENU        reduce using rule 73 (empty -> .)
+    CONFIG          reduce using rule 73 (empty -> .)
+    MENUCONFIG      reduce using rule 73 (empty -> .)
+    MENU            reduce using rule 73 (empty -> .)
+    IF              reduce using rule 73 (empty -> .)
+    CHOICE          reduce using rule 73 (empty -> .)
+    ENDMENU         reduce using rule 73 (empty -> .)
+    ENDIF           reduce using rule 73 (empty -> .)
+    ENDCHOICE       reduce using rule 73 (empty -> .)
+    COMMENT         reduce using rule 73 (empty -> .)
+    SOURCE          reduce using rule 73 (empty -> .)
+    INT             reduce using rule 73 (empty -> .)
+    HEX             reduce using rule 73 (empty -> .)
+    STRING          reduce using rule 73 (empty -> .)
+    BOOL            reduce using rule 73 (empty -> .)
+    TRISTATE        reduce using rule 73 (empty -> .)
+    DEPENDS         reduce using rule 73 (empty -> .)
+    SELECT          reduce using rule 73 (empty -> .)
+    IMPLY           reduce using rule 73 (empty -> .)
+    PROMPT          reduce using rule 73 (empty -> .)
+    DEFAULT         reduce using rule 73 (empty -> .)
+    DEF_BOOL        reduce using rule 73 (empty -> .)
+    DEF_TRISTATE    reduce using rule 73 (empty -> .)
+    HELP            reduce using rule 73 (empty -> .)
+    RANGE           reduce using rule 73 (empty -> .)
+    VISIBILE        reduce using rule 73 (empty -> .)
+    MODULES         reduce using rule 73 (empty -> .)
+    OPTIONAL        reduce using rule 73 (empty -> .)
+    PATH            reduce using rule 73 (empty -> .)
+    ENDPATH         reduce using rule 73 (empty -> .)
+    $end            reduce using rule 73 (empty -> .)
+
+    input                          shift and go to state 1
+    empty                          shift and go to state 2
+
+state 1
+
+    (0) S' -> input .
+    (1) input -> input . mainmenu_stmt
+    (2) input -> input . config_stmt
+    (3) input -> input . menu_stmt
+    (4) input -> input . if_stmt
+    (5) input -> input . choice_stmt
+    (6) input -> input . groupend_stmt
+    (7) input -> input . comment_stmt
+    (8) input -> input . source_stmt
+    (9) input -> input . type_stmt
+    (10) input -> input . depends_stmt
+    (11) input -> input . select_imply_stmt
+    (12) input -> input . prompt_stmt
+    (13) input -> input . default_stmt
+    (14) input -> input . help_stmt
+    (15) input -> input . range_stmt
+    (16) input -> input . visible_stmt
+    (17) input -> input . modules_stmt
+    (18) input -> input . optional_stmt
+    (19) input -> input . path_stmt
+    (20) input -> input . endpath_stmt
+    (24) mainmenu_stmt -> . MAINMENU QUOTE_WORD EOL
+    (25) config_stmt -> . CONFIG WORD EOL
+    (26) config_stmt -> . MENUCONFIG WORD EOL
+    (28) menu_stmt -> . MENU QUOTE_WORD EOL
+    (29) if_stmt -> . IF expr EOL
+    (30) choice_stmt -> . CHOICE WORD EOL
+    (31) choice_stmt -> . CHOICE EOL
+    (32) groupend_stmt -> . ENDMENU EOL
+    (33) groupend_stmt -> . ENDIF EOL
+    (34) groupend_stmt -> . ENDCHOICE EOL
+    (27) comment_stmt -> . COMMENT QUOTE_WORD EOL
+    (56) source_stmt -> . SOURCE QUOTE_WORD EOL
+    (37) type_stmt -> . INT prompt_stmt_opt EOL
+    (38) type_stmt -> . HEX prompt_stmt_opt EOL
+    (39) type_stmt -> . STRING prompt_stmt_opt EOL
+    (40) type_stmt -> . BOOL prompt_stmt_opt EOL
+    (41) type_stmt -> . TRISTATE prompt_stmt_opt EOL
+    (45) depends_stmt -> . DEPENDS ON expr EOL
+    (46) select_imply_stmt -> . SELECT QUOTE_WORD if_expr EOL
+    (47) select_imply_stmt -> . SELECT WORD if_expr EOL
+    (48) select_imply_stmt -> . IMPLY WORD if_expr EOL
+    (42) prompt_stmt -> . PROMPT QUOTE_WORD if_expr EOL
+    (51) default_stmt -> . DEFAULT expr if_expr EOL
+    (52) default_stmt -> . DEF_BOOL expr if_expr EOL
+    (53) default_stmt -> . DEF_TRISTATE expr if_expr EOL
+    (43) help_stmt -> . HELP HELP_CONTEXT EOL
+    (44) help_stmt -> . HELP HELP_CONTEXT
+    (49) range_stmt -> . RANGE symbol symbol if_expr EOL
+    (54) visible_stmt -> . VISIBILE if_expr EOL
+    (55) modules_stmt -> . MODULES EOL
+    (50) optional_stmt -> . OPTIONAL EOL
+    (22) path_stmt -> . PATH QUOTE_WORD EOL
+    (23) endpath_stmt -> . ENDPATH EOL
+
+    MAINMENU        shift and go to state 23
+    CONFIG          shift and go to state 24
+    MENUCONFIG      shift and go to state 25
+    MENU            shift and go to state 26
+    IF              shift and go to state 27
+    CHOICE          shift and go to state 28
+    ENDMENU         shift and go to state 29
+    ENDIF           shift and go to state 30
+    ENDCHOICE       shift and go to state 31
+    COMMENT         shift and go to state 32
+    SOURCE          shift and go to state 33
+    INT             shift and go to state 34
+    HEX             shift and go to state 35
+    STRING          shift and go to state 36
+    BOOL            shift and go to state 37
+    TRISTATE        shift and go to state 38
+    DEPENDS         shift and go to state 39
+    SELECT          shift and go to state 40
+    IMPLY           shift and go to state 41
+    PROMPT          shift and go to state 42
+    DEFAULT         shift and go to state 43
+    DEF_BOOL        shift and go to state 44
+    DEF_TRISTATE    shift and go to state 45
+    HELP            shift and go to state 46
+    RANGE           shift and go to state 47
+    VISIBILE        shift and go to state 48
+    MODULES         shift and go to state 49
+    OPTIONAL        shift and go to state 50
+    PATH            shift and go to state 51
+    ENDPATH         shift and go to state 52
+
+    mainmenu_stmt                  shift and go to state 3
+    config_stmt                    shift and go to state 4
+    menu_stmt                      shift and go to state 5
+    if_stmt                        shift and go to state 6
+    choice_stmt                    shift and go to state 7
+    groupend_stmt                  shift and go to state 8
+    comment_stmt                   shift and go to state 9
+    source_stmt                    shift and go to state 10
+    type_stmt                      shift and go to state 11
+    depends_stmt                   shift and go to state 12
+    select_imply_stmt              shift and go to state 13
+    prompt_stmt                    shift and go to state 14
+    default_stmt                   shift and go to state 15
+    help_stmt                      shift and go to state 16
+    range_stmt                     shift and go to state 17
+    visible_stmt                   shift and go to state 18
+    modules_stmt                   shift and go to state 19
+    optional_stmt                  shift and go to state 20
+    path_stmt                      shift and go to state 21
+    endpath_stmt                   shift and go to state 22
+
+state 2
+
+    (21) input -> empty .
+
+    MAINMENU        reduce using rule 21 (input -> empty .)
+    CONFIG          reduce using rule 21 (input -> empty .)
+    MENUCONFIG      reduce using rule 21 (input -> empty .)
+    MENU            reduce using rule 21 (input -> empty .)
+    IF              reduce using rule 21 (input -> empty .)
+    CHOICE          reduce using rule 21 (input -> empty .)
+    ENDMENU         reduce using rule 21 (input -> empty .)
+    ENDIF           reduce using rule 21 (input -> empty .)
+    ENDCHOICE       reduce using rule 21 (input -> empty .)
+    COMMENT         reduce using rule 21 (input -> empty .)
+    SOURCE          reduce using rule 21 (input -> empty .)
+    INT             reduce using rule 21 (input -> empty .)
+    HEX             reduce using rule 21 (input -> empty .)
+    STRING          reduce using rule 21 (input -> empty .)
+    BOOL            reduce using rule 21 (input -> empty .)
+    TRISTATE        reduce using rule 21 (input -> empty .)
+    DEPENDS         reduce using rule 21 (input -> empty .)
+    SELECT          reduce using rule 21 (input -> empty .)
+    IMPLY           reduce using rule 21 (input -> empty .)
+    PROMPT          reduce using rule 21 (input -> empty .)
+    DEFAULT         reduce using rule 21 (input -> empty .)
+    DEF_BOOL        reduce using rule 21 (input -> empty .)
+    DEF_TRISTATE    reduce using rule 21 (input -> empty .)
+    HELP            reduce using rule 21 (input -> empty .)
+    RANGE           reduce using rule 21 (input -> empty .)
+    VISIBILE        reduce using rule 21 (input -> empty .)
+    MODULES         reduce using rule 21 (input -> empty .)
+    OPTIONAL        reduce using rule 21 (input -> empty .)
+    PATH            reduce using rule 21 (input -> empty .)
+    ENDPATH         reduce using rule 21 (input -> empty .)
+    $end            reduce using rule 21 (input -> empty .)
+
+
+state 3
+
+    (1) input -> input mainmenu_stmt .
+
+    MAINMENU        reduce using rule 1 (input -> input mainmenu_stmt .)
+    CONFIG          reduce using rule 1 (input -> input mainmenu_stmt .)
+    MENUCONFIG      reduce using rule 1 (input -> input mainmenu_stmt .)
+    MENU            reduce using rule 1 (input -> input mainmenu_stmt .)
+    IF              reduce using rule 1 (input -> input mainmenu_stmt .)
+    CHOICE          reduce using rule 1 (input -> input mainmenu_stmt .)
+    ENDMENU         reduce using rule 1 (input -> input mainmenu_stmt .)
+    ENDIF           reduce using rule 1 (input -> input mainmenu_stmt .)
+    ENDCHOICE       reduce using rule 1 (input -> input mainmenu_stmt .)
+    COMMENT         reduce using rule 1 (input -> input mainmenu_stmt .)
+    SOURCE          reduce using rule 1 (input -> input mainmenu_stmt .)
+    INT             reduce using rule 1 (input -> input mainmenu_stmt .)
+    HEX             reduce using rule 1 (input -> input mainmenu_stmt .)
+    STRING          reduce using rule 1 (input -> input mainmenu_stmt .)
+    BOOL            reduce using rule 1 (input -> input mainmenu_stmt .)
+    TRISTATE        reduce using rule 1 (input -> input mainmenu_stmt .)
+    DEPENDS         reduce using rule 1 (input -> input mainmenu_stmt .)
+    SELECT          reduce using rule 1 (input -> input mainmenu_stmt .)
+    IMPLY           reduce using rule 1 (input -> input mainmenu_stmt .)
+    PROMPT          reduce using rule 1 (input -> input mainmenu_stmt .)
+    DEFAULT         reduce using rule 1 (input -> input mainmenu_stmt .)
+    DEF_BOOL        reduce using rule 1 (input -> input mainmenu_stmt .)
+    DEF_TRISTATE    reduce using rule 1 (input -> input mainmenu_stmt .)
+    HELP            reduce using rule 1 (input -> input mainmenu_stmt .)
+    RANGE           reduce using rule 1 (input -> input mainmenu_stmt .)
+    VISIBILE        reduce using rule 1 (input -> input mainmenu_stmt .)
+    MODULES         reduce using rule 1 (input -> input mainmenu_stmt .)
+    OPTIONAL        reduce using rule 1 (input -> input mainmenu_stmt .)
+    PATH            reduce using rule 1 (input -> input mainmenu_stmt .)
+    ENDPATH         reduce using rule 1 (input -> input mainmenu_stmt .)
+    $end            reduce using rule 1 (input -> input mainmenu_stmt .)
+
+
+state 4
+
+    (2) input -> input config_stmt .
+
+    MAINMENU        reduce using rule 2 (input -> input config_stmt .)
+    CONFIG          reduce using rule 2 (input -> input config_stmt .)
+    MENUCONFIG      reduce using rule 2 (input -> input config_stmt .)
+    MENU            reduce using rule 2 (input -> input config_stmt .)
+    IF              reduce using rule 2 (input -> input config_stmt .)
+    CHOICE          reduce using rule 2 (input -> input config_stmt .)
+    ENDMENU         reduce using rule 2 (input -> input config_stmt .)
+    ENDIF           reduce using rule 2 (input -> input config_stmt .)
+    ENDCHOICE       reduce using rule 2 (input -> input config_stmt .)
+    COMMENT         reduce using rule 2 (input -> input config_stmt .)
+    SOURCE          reduce using rule 2 (input -> input config_stmt .)
+    INT             reduce using rule 2 (input -> input config_stmt .)
+    HEX             reduce using rule 2 (input -> input config_stmt .)
+    STRING          reduce using rule 2 (input -> input config_stmt .)
+    BOOL            reduce using rule 2 (input -> input config_stmt .)
+    TRISTATE        reduce using rule 2 (input -> input config_stmt .)
+    DEPENDS         reduce using rule 2 (input -> input config_stmt .)
+    SELECT          reduce using rule 2 (input -> input config_stmt .)
+    IMPLY           reduce using rule 2 (input -> input config_stmt .)
+    PROMPT          reduce using rule 2 (input -> input config_stmt .)
+    DEFAULT         reduce using rule 2 (input -> input config_stmt .)
+    DEF_BOOL        reduce using rule 2 (input -> input config_stmt .)
+    DEF_TRISTATE    reduce using rule 2 (input -> input config_stmt .)
+    HELP            reduce using rule 2 (input -> input config_stmt .)
+    RANGE           reduce using rule 2 (input -> input config_stmt .)
+    VISIBILE        reduce using rule 2 (input -> input config_stmt .)
+    MODULES         reduce using rule 2 (input -> input config_stmt .)
+    OPTIONAL        reduce using rule 2 (input -> input config_stmt .)
+    PATH            reduce using rule 2 (input -> input config_stmt .)
+    ENDPATH         reduce using rule 2 (input -> input config_stmt .)
+    $end            reduce using rule 2 (input -> input config_stmt .)
+
+
+state 5
+
+    (3) input -> input menu_stmt .
+
+    MAINMENU        reduce using rule 3 (input -> input menu_stmt .)
+    CONFIG          reduce using rule 3 (input -> input menu_stmt .)
+    MENUCONFIG      reduce using rule 3 (input -> input menu_stmt .)
+    MENU            reduce using rule 3 (input -> input menu_stmt .)
+    IF              reduce using rule 3 (input -> input menu_stmt .)
+    CHOICE          reduce using rule 3 (input -> input menu_stmt .)
+    ENDMENU         reduce using rule 3 (input -> input menu_stmt .)
+    ENDIF           reduce using rule 3 (input -> input menu_stmt .)
+    ENDCHOICE       reduce using rule 3 (input -> input menu_stmt .)
+    COMMENT         reduce using rule 3 (input -> input menu_stmt .)
+    SOURCE          reduce using rule 3 (input -> input menu_stmt .)
+    INT             reduce using rule 3 (input -> input menu_stmt .)
+    HEX             reduce using rule 3 (input -> input menu_stmt .)
+    STRING          reduce using rule 3 (input -> input menu_stmt .)
+    BOOL            reduce using rule 3 (input -> input menu_stmt .)
+    TRISTATE        reduce using rule 3 (input -> input menu_stmt .)
+    DEPENDS         reduce using rule 3 (input -> input menu_stmt .)
+    SELECT          reduce using rule 3 (input -> input menu_stmt .)
+    IMPLY           reduce using rule 3 (input -> input menu_stmt .)
+    PROMPT          reduce using rule 3 (input -> input menu_stmt .)
+    DEFAULT         reduce using rule 3 (input -> input menu_stmt .)
+    DEF_BOOL        reduce using rule 3 (input -> input menu_stmt .)
+    DEF_TRISTATE    reduce using rule 3 (input -> input menu_stmt .)
+    HELP            reduce using rule 3 (input -> input menu_stmt .)
+    RANGE           reduce using rule 3 (input -> input menu_stmt .)
+    VISIBILE        reduce using rule 3 (input -> input menu_stmt .)
+    MODULES         reduce using rule 3 (input -> input menu_stmt .)
+    OPTIONAL        reduce using rule 3 (input -> input menu_stmt .)
+    PATH            reduce using rule 3 (input -> input menu_stmt .)
+    ENDPATH         reduce using rule 3 (input -> input menu_stmt .)
+    $end            reduce using rule 3 (input -> input menu_stmt .)
+
+
+state 6
+
+    (4) input -> input if_stmt .
+
+    MAINMENU        reduce using rule 4 (input -> input if_stmt .)
+    CONFIG          reduce using rule 4 (input -> input if_stmt .)
+    MENUCONFIG      reduce using rule 4 (input -> input if_stmt .)
+    MENU            reduce using rule 4 (input -> input if_stmt .)
+    IF              reduce using rule 4 (input -> input if_stmt .)
+    CHOICE          reduce using rule 4 (input -> input if_stmt .)
+    ENDMENU         reduce using rule 4 (input -> input if_stmt .)
+    ENDIF           reduce using rule 4 (input -> input if_stmt .)
+    ENDCHOICE       reduce using rule 4 (input -> input if_stmt .)
+    COMMENT         reduce using rule 4 (input -> input if_stmt .)
+    SOURCE          reduce using rule 4 (input -> input if_stmt .)
+    INT             reduce using rule 4 (input -> input if_stmt .)
+    HEX             reduce using rule 4 (input -> input if_stmt .)
+    STRING          reduce using rule 4 (input -> input if_stmt .)
+    BOOL            reduce using rule 4 (input -> input if_stmt .)
+    TRISTATE        reduce using rule 4 (input -> input if_stmt .)
+    DEPENDS         reduce using rule 4 (input -> input if_stmt .)
+    SELECT          reduce using rule 4 (input -> input if_stmt .)
+    IMPLY           reduce using rule 4 (input -> input if_stmt .)
+    PROMPT          reduce using rule 4 (input -> input if_stmt .)
+    DEFAULT         reduce using rule 4 (input -> input if_stmt .)
+    DEF_BOOL        reduce using rule 4 (input -> input if_stmt .)
+    DEF_TRISTATE    reduce using rule 4 (input -> input if_stmt .)
+    HELP            reduce using rule 4 (input -> input if_stmt .)
+    RANGE           reduce using rule 4 (input -> input if_stmt .)
+    VISIBILE        reduce using rule 4 (input -> input if_stmt .)
+    MODULES         reduce using rule 4 (input -> input if_stmt .)
+    OPTIONAL        reduce using rule 4 (input -> input if_stmt .)
+    PATH            reduce using rule 4 (input -> input if_stmt .)
+    ENDPATH         reduce using rule 4 (input -> input if_stmt .)
+    $end            reduce using rule 4 (input -> input if_stmt .)
+
+
+state 7
+
+    (5) input -> input choice_stmt .
+
+    MAINMENU        reduce using rule 5 (input -> input choice_stmt .)
+    CONFIG          reduce using rule 5 (input -> input choice_stmt .)
+    MENUCONFIG      reduce using rule 5 (input -> input choice_stmt .)
+    MENU            reduce using rule 5 (input -> input choice_stmt .)
+    IF              reduce using rule 5 (input -> input choice_stmt .)
+    CHOICE          reduce using rule 5 (input -> input choice_stmt .)
+    ENDMENU         reduce using rule 5 (input -> input choice_stmt .)
+    ENDIF           reduce using rule 5 (input -> input choice_stmt .)
+    ENDCHOICE       reduce using rule 5 (input -> input choice_stmt .)
+    COMMENT         reduce using rule 5 (input -> input choice_stmt .)
+    SOURCE          reduce using rule 5 (input -> input choice_stmt .)
+    INT             reduce using rule 5 (input -> input choice_stmt .)
+    HEX             reduce using rule 5 (input -> input choice_stmt .)
+    STRING          reduce using rule 5 (input -> input choice_stmt .)
+    BOOL            reduce using rule 5 (input -> input choice_stmt .)
+    TRISTATE        reduce using rule 5 (input -> input choice_stmt .)
+    DEPENDS         reduce using rule 5 (input -> input choice_stmt .)
+    SELECT          reduce using rule 5 (input -> input choice_stmt .)
+    IMPLY           reduce using rule 5 (input -> input choice_stmt .)
+    PROMPT          reduce using rule 5 (input -> input choice_stmt .)
+    DEFAULT         reduce using rule 5 (input -> input choice_stmt .)
+    DEF_BOOL        reduce using rule 5 (input -> input choice_stmt .)
+    DEF_TRISTATE    reduce using rule 5 (input -> input choice_stmt .)
+    HELP            reduce using rule 5 (input -> input choice_stmt .)
+    RANGE           reduce using rule 5 (input -> input choice_stmt .)
+    VISIBILE        reduce using rule 5 (input -> input choice_stmt .)
+    MODULES         reduce using rule 5 (input -> input choice_stmt .)
+    OPTIONAL        reduce using rule 5 (input -> input choice_stmt .)
+    PATH            reduce using rule 5 (input -> input choice_stmt .)
+    ENDPATH         reduce using rule 5 (input -> input choice_stmt .)
+    $end            reduce using rule 5 (input -> input choice_stmt .)
+
+
+state 8
+
+    (6) input -> input groupend_stmt .
+
+    MAINMENU        reduce using rule 6 (input -> input groupend_stmt .)
+    CONFIG          reduce using rule 6 (input -> input groupend_stmt .)
+    MENUCONFIG      reduce using rule 6 (input -> input groupend_stmt .)
+    MENU            reduce using rule 6 (input -> input groupend_stmt .)
+    IF              reduce using rule 6 (input -> input groupend_stmt .)
+    CHOICE          reduce using rule 6 (input -> input groupend_stmt .)
+    ENDMENU         reduce using rule 6 (input -> input groupend_stmt .)
+    ENDIF           reduce using rule 6 (input -> input groupend_stmt .)
+    ENDCHOICE       reduce using rule 6 (input -> input groupend_stmt .)
+    COMMENT         reduce using rule 6 (input -> input groupend_stmt .)
+    SOURCE          reduce using rule 6 (input -> input groupend_stmt .)
+    INT             reduce using rule 6 (input -> input groupend_stmt .)
+    HEX             reduce using rule 6 (input -> input groupend_stmt .)
+    STRING          reduce using rule 6 (input -> input groupend_stmt .)
+    BOOL            reduce using rule 6 (input -> input groupend_stmt .)
+    TRISTATE        reduce using rule 6 (input -> input groupend_stmt .)
+    DEPENDS         reduce using rule 6 (input -> input groupend_stmt .)
+    SELECT          reduce using rule 6 (input -> input groupend_stmt .)
+    IMPLY           reduce using rule 6 (input -> input groupend_stmt .)
+    PROMPT          reduce using rule 6 (input -> input groupend_stmt .)
+    DEFAULT         reduce using rule 6 (input -> input groupend_stmt .)
+    DEF_BOOL        reduce using rule 6 (input -> input groupend_stmt .)
+    DEF_TRISTATE    reduce using rule 6 (input -> input groupend_stmt .)
+    HELP            reduce using rule 6 (input -> input groupend_stmt .)
+    RANGE           reduce using rule 6 (input -> input groupend_stmt .)
+    VISIBILE        reduce using rule 6 (input -> input groupend_stmt .)
+    MODULES         reduce using rule 6 (input -> input groupend_stmt .)
+    OPTIONAL        reduce using rule 6 (input -> input groupend_stmt .)
+    PATH            reduce using rule 6 (input -> input groupend_stmt .)
+    ENDPATH         reduce using rule 6 (input -> input groupend_stmt .)
+    $end            reduce using rule 6 (input -> input groupend_stmt .)
+
+
+state 9
+
+    (7) input -> input comment_stmt .
+
+    MAINMENU        reduce using rule 7 (input -> input comment_stmt .)
+    CONFIG          reduce using rule 7 (input -> input comment_stmt .)
+    MENUCONFIG      reduce using rule 7 (input -> input comment_stmt .)
+    MENU            reduce using rule 7 (input -> input comment_stmt .)
+    IF              reduce using rule 7 (input -> input comment_stmt .)
+    CHOICE          reduce using rule 7 (input -> input comment_stmt .)
+    ENDMENU         reduce using rule 7 (input -> input comment_stmt .)
+    ENDIF           reduce using rule 7 (input -> input comment_stmt .)
+    ENDCHOICE       reduce using rule 7 (input -> input comment_stmt .)
+    COMMENT         reduce using rule 7 (input -> input comment_stmt .)
+    SOURCE          reduce using rule 7 (input -> input comment_stmt .)
+    INT             reduce using rule 7 (input -> input comment_stmt .)
+    HEX             reduce using rule 7 (input -> input comment_stmt .)
+    STRING          reduce using rule 7 (input -> input comment_stmt .)
+    BOOL            reduce using rule 7 (input -> input comment_stmt .)
+    TRISTATE        reduce using rule 7 (input -> input comment_stmt .)
+    DEPENDS         reduce using rule 7 (input -> input comment_stmt .)
+    SELECT          reduce using rule 7 (input -> input comment_stmt .)
+    IMPLY           reduce using rule 7 (input -> input comment_stmt .)
+    PROMPT          reduce using rule 7 (input -> input comment_stmt .)
+    DEFAULT         reduce using rule 7 (input -> input comment_stmt .)
+    DEF_BOOL        reduce using rule 7 (input -> input comment_stmt .)
+    DEF_TRISTATE    reduce using rule 7 (input -> input comment_stmt .)
+    HELP            reduce using rule 7 (input -> input comment_stmt .)
+    RANGE           reduce using rule 7 (input -> input comment_stmt .)
+    VISIBILE        reduce using rule 7 (input -> input comment_stmt .)
+    MODULES         reduce using rule 7 (input -> input comment_stmt .)
+    OPTIONAL        reduce using rule 7 (input -> input comment_stmt .)
+    PATH            reduce using rule 7 (input -> input comment_stmt .)
+    ENDPATH         reduce using rule 7 (input -> input comment_stmt .)
+    $end            reduce using rule 7 (input -> input comment_stmt .)
+
+
+state 10
+
+    (8) input -> input source_stmt .
+
+    MAINMENU        reduce using rule 8 (input -> input source_stmt .)
+    CONFIG          reduce using rule 8 (input -> input source_stmt .)
+    MENUCONFIG      reduce using rule 8 (input -> input source_stmt .)
+    MENU            reduce using rule 8 (input -> input source_stmt .)
+    IF              reduce using rule 8 (input -> input source_stmt .)
+    CHOICE          reduce using rule 8 (input -> input source_stmt .)
+    ENDMENU         reduce using rule 8 (input -> input source_stmt .)
+    ENDIF           reduce using rule 8 (input -> input source_stmt .)
+    ENDCHOICE       reduce using rule 8 (input -> input source_stmt .)
+    COMMENT         reduce using rule 8 (input -> input source_stmt .)
+    SOURCE          reduce using rule 8 (input -> input source_stmt .)
+    INT             reduce using rule 8 (input -> input source_stmt .)
+    HEX             reduce using rule 8 (input -> input source_stmt .)
+    STRING          reduce using rule 8 (input -> input source_stmt .)
+    BOOL            reduce using rule 8 (input -> input source_stmt .)
+    TRISTATE        reduce using rule 8 (input -> input source_stmt .)
+    DEPENDS         reduce using rule 8 (input -> input source_stmt .)
+    SELECT          reduce using rule 8 (input -> input source_stmt .)
+    IMPLY           reduce using rule 8 (input -> input source_stmt .)
+    PROMPT          reduce using rule 8 (input -> input source_stmt .)
+    DEFAULT         reduce using rule 8 (input -> input source_stmt .)
+    DEF_BOOL        reduce using rule 8 (input -> input source_stmt .)
+    DEF_TRISTATE    reduce using rule 8 (input -> input source_stmt .)
+    HELP            reduce using rule 8 (input -> input source_stmt .)
+    RANGE           reduce using rule 8 (input -> input source_stmt .)
+    VISIBILE        reduce using rule 8 (input -> input source_stmt .)
+    MODULES         reduce using rule 8 (input -> input source_stmt .)
+    OPTIONAL        reduce using rule 8 (input -> input source_stmt .)
+    PATH            reduce using rule 8 (input -> input source_stmt .)
+    ENDPATH         reduce using rule 8 (input -> input source_stmt .)
+    $end            reduce using rule 8 (input -> input source_stmt .)
+
+
+state 11
+
+    (9) input -> input type_stmt .
+
+    MAINMENU        reduce using rule 9 (input -> input type_stmt .)
+    CONFIG          reduce using rule 9 (input -> input type_stmt .)
+    MENUCONFIG      reduce using rule 9 (input -> input type_stmt .)
+    MENU            reduce using rule 9 (input -> input type_stmt .)
+    IF              reduce using rule 9 (input -> input type_stmt .)
+    CHOICE          reduce using rule 9 (input -> input type_stmt .)
+    ENDMENU         reduce using rule 9 (input -> input type_stmt .)
+    ENDIF           reduce using rule 9 (input -> input type_stmt .)
+    ENDCHOICE       reduce using rule 9 (input -> input type_stmt .)
+    COMMENT         reduce using rule 9 (input -> input type_stmt .)
+    SOURCE          reduce using rule 9 (input -> input type_stmt .)
+    INT             reduce using rule 9 (input -> input type_stmt .)
+    HEX             reduce using rule 9 (input -> input type_stmt .)
+    STRING          reduce using rule 9 (input -> input type_stmt .)
+    BOOL            reduce using rule 9 (input -> input type_stmt .)
+    TRISTATE        reduce using rule 9 (input -> input type_stmt .)
+    DEPENDS         reduce using rule 9 (input -> input type_stmt .)
+    SELECT          reduce using rule 9 (input -> input type_stmt .)
+    IMPLY           reduce using rule 9 (input -> input type_stmt .)
+    PROMPT          reduce using rule 9 (input -> input type_stmt .)
+    DEFAULT         reduce using rule 9 (input -> input type_stmt .)
+    DEF_BOOL        reduce using rule 9 (input -> input type_stmt .)
+    DEF_TRISTATE    reduce using rule 9 (input -> input type_stmt .)
+    HELP            reduce using rule 9 (input -> input type_stmt .)
+    RANGE           reduce using rule 9 (input -> input type_stmt .)
+    VISIBILE        reduce using rule 9 (input -> input type_stmt .)
+    MODULES         reduce using rule 9 (input -> input type_stmt .)
+    OPTIONAL        reduce using rule 9 (input -> input type_stmt .)
+    PATH            reduce using rule 9 (input -> input type_stmt .)
+    ENDPATH         reduce using rule 9 (input -> input type_stmt .)
+    $end            reduce using rule 9 (input -> input type_stmt .)
+
+
+state 12
+
+    (10) input -> input depends_stmt .
+
+    MAINMENU        reduce using rule 10 (input -> input depends_stmt .)
+    CONFIG          reduce using rule 10 (input -> input depends_stmt .)
+    MENUCONFIG      reduce using rule 10 (input -> input depends_stmt .)
+    MENU            reduce using rule 10 (input -> input depends_stmt .)
+    IF              reduce using rule 10 (input -> input depends_stmt .)
+    CHOICE          reduce using rule 10 (input -> input depends_stmt .)
+    ENDMENU         reduce using rule 10 (input -> input depends_stmt .)
+    ENDIF           reduce using rule 10 (input -> input depends_stmt .)
+    ENDCHOICE       reduce using rule 10 (input -> input depends_stmt .)
+    COMMENT         reduce using rule 10 (input -> input depends_stmt .)
+    SOURCE          reduce using rule 10 (input -> input depends_stmt .)
+    INT             reduce using rule 10 (input -> input depends_stmt .)
+    HEX             reduce using rule 10 (input -> input depends_stmt .)
+    STRING          reduce using rule 10 (input -> input depends_stmt .)
+    BOOL            reduce using rule 10 (input -> input depends_stmt .)
+    TRISTATE        reduce using rule 10 (input -> input depends_stmt .)
+    DEPENDS         reduce using rule 10 (input -> input depends_stmt .)
+    SELECT          reduce using rule 10 (input -> input depends_stmt .)
+    IMPLY           reduce using rule 10 (input -> input depends_stmt .)
+    PROMPT          reduce using rule 10 (input -> input depends_stmt .)
+    DEFAULT         reduce using rule 10 (input -> input depends_stmt .)
+    DEF_BOOL        reduce using rule 10 (input -> input depends_stmt .)
+    DEF_TRISTATE    reduce using rule 10 (input -> input depends_stmt .)
+    HELP            reduce using rule 10 (input -> input depends_stmt .)
+    RANGE           reduce using rule 10 (input -> input depends_stmt .)
+    VISIBILE        reduce using rule 10 (input -> input depends_stmt .)
+    MODULES         reduce using rule 10 (input -> input depends_stmt .)
+    OPTIONAL        reduce using rule 10 (input -> input depends_stmt .)
+    PATH            reduce using rule 10 (input -> input depends_stmt .)
+    ENDPATH         reduce using rule 10 (input -> input depends_stmt .)
+    $end            reduce using rule 10 (input -> input depends_stmt .)
+
+
+state 13
+
+    (11) input -> input select_imply_stmt .
+
+    MAINMENU        reduce using rule 11 (input -> input select_imply_stmt .)
+    CONFIG          reduce using rule 11 (input -> input select_imply_stmt .)
+    MENUCONFIG      reduce using rule 11 (input -> input select_imply_stmt .)
+    MENU            reduce using rule 11 (input -> input select_imply_stmt .)
+    IF              reduce using rule 11 (input -> input select_imply_stmt .)
+    CHOICE          reduce using rule 11 (input -> input select_imply_stmt .)
+    ENDMENU         reduce using rule 11 (input -> input select_imply_stmt .)
+    ENDIF           reduce using rule 11 (input -> input select_imply_stmt .)
+    ENDCHOICE       reduce using rule 11 (input -> input select_imply_stmt .)
+    COMMENT         reduce using rule 11 (input -> input select_imply_stmt .)
+    SOURCE          reduce using rule 11 (input -> input select_imply_stmt .)
+    INT             reduce using rule 11 (input -> input select_imply_stmt .)
+    HEX             reduce using rule 11 (input -> input select_imply_stmt .)
+    STRING          reduce using rule 11 (input -> input select_imply_stmt .)
+    BOOL            reduce using rule 11 (input -> input select_imply_stmt .)
+    TRISTATE        reduce using rule 11 (input -> input select_imply_stmt .)
+    DEPENDS         reduce using rule 11 (input -> input select_imply_stmt .)
+    SELECT          reduce using rule 11 (input -> input select_imply_stmt .)
+    IMPLY           reduce using rule 11 (input -> input select_imply_stmt .)
+    PROMPT          reduce using rule 11 (input -> input select_imply_stmt .)
+    DEFAULT         reduce using rule 11 (input -> input select_imply_stmt .)
+    DEF_BOOL        reduce using rule 11 (input -> input select_imply_stmt .)
+    DEF_TRISTATE    reduce using rule 11 (input -> input select_imply_stmt .)
+    HELP            reduce using rule 11 (input -> input select_imply_stmt .)
+    RANGE           reduce using rule 11 (input -> input select_imply_stmt .)
+    VISIBILE        reduce using rule 11 (input -> input select_imply_stmt .)
+    MODULES         reduce using rule 11 (input -> input select_imply_stmt .)
+    OPTIONAL        reduce using rule 11 (input -> input select_imply_stmt .)
+    PATH            reduce using rule 11 (input -> input select_imply_stmt .)
+    ENDPATH         reduce using rule 11 (input -> input select_imply_stmt .)
+    $end            reduce using rule 11 (input -> input select_imply_stmt .)
+
+
+state 14
+
+    (12) input -> input prompt_stmt .
+
+    MAINMENU        reduce using rule 12 (input -> input prompt_stmt .)
+    CONFIG          reduce using rule 12 (input -> input prompt_stmt .)
+    MENUCONFIG      reduce using rule 12 (input -> input prompt_stmt .)
+    MENU            reduce using rule 12 (input -> input prompt_stmt .)
+    IF              reduce using rule 12 (input -> input prompt_stmt .)
+    CHOICE          reduce using rule 12 (input -> input prompt_stmt .)
+    ENDMENU         reduce using rule 12 (input -> input prompt_stmt .)
+    ENDIF           reduce using rule 12 (input -> input prompt_stmt .)
+    ENDCHOICE       reduce using rule 12 (input -> input prompt_stmt .)
+    COMMENT         reduce using rule 12 (input -> input prompt_stmt .)
+    SOURCE          reduce using rule 12 (input -> input prompt_stmt .)
+    INT             reduce using rule 12 (input -> input prompt_stmt .)
+    HEX             reduce using rule 12 (input -> input prompt_stmt .)
+    STRING          reduce using rule 12 (input -> input prompt_stmt .)
+    BOOL            reduce using rule 12 (input -> input prompt_stmt .)
+    TRISTATE        reduce using rule 12 (input -> input prompt_stmt .)
+    DEPENDS         reduce using rule 12 (input -> input prompt_stmt .)
+    SELECT          reduce using rule 12 (input -> input prompt_stmt .)
+    IMPLY           reduce using rule 12 (input -> input prompt_stmt .)
+    PROMPT          reduce using rule 12 (input -> input prompt_stmt .)
+    DEFAULT         reduce using rule 12 (input -> input prompt_stmt .)
+    DEF_BOOL        reduce using rule 12 (input -> input prompt_stmt .)
+    DEF_TRISTATE    reduce using rule 12 (input -> input prompt_stmt .)
+    HELP            reduce using rule 12 (input -> input prompt_stmt .)
+    RANGE           reduce using rule 12 (input -> input prompt_stmt .)
+    VISIBILE        reduce using rule 12 (input -> input prompt_stmt .)
+    MODULES         reduce using rule 12 (input -> input prompt_stmt .)
+    OPTIONAL        reduce using rule 12 (input -> input prompt_stmt .)
+    PATH            reduce using rule 12 (input -> input prompt_stmt .)
+    ENDPATH         reduce using rule 12 (input -> input prompt_stmt .)
+    $end            reduce using rule 12 (input -> input prompt_stmt .)
+
+
+state 15
+
+    (13) input -> input default_stmt .
+
+    MAINMENU        reduce using rule 13 (input -> input default_stmt .)
+    CONFIG          reduce using rule 13 (input -> input default_stmt .)
+    MENUCONFIG      reduce using rule 13 (input -> input default_stmt .)
+    MENU            reduce using rule 13 (input -> input default_stmt .)
+    IF              reduce using rule 13 (input -> input default_stmt .)
+    CHOICE          reduce using rule 13 (input -> input default_stmt .)
+    ENDMENU         reduce using rule 13 (input -> input default_stmt .)
+    ENDIF           reduce using rule 13 (input -> input default_stmt .)
+    ENDCHOICE       reduce using rule 13 (input -> input default_stmt .)
+    COMMENT         reduce using rule 13 (input -> input default_stmt .)
+    SOURCE          reduce using rule 13 (input -> input default_stmt .)
+    INT             reduce using rule 13 (input -> input default_stmt .)
+    HEX             reduce using rule 13 (input -> input default_stmt .)
+    STRING          reduce using rule 13 (input -> input default_stmt .)
+    BOOL            reduce using rule 13 (input -> input default_stmt .)
+    TRISTATE        reduce using rule 13 (input -> input default_stmt .)
+    DEPENDS         reduce using rule 13 (input -> input default_stmt .)
+    SELECT          reduce using rule 13 (input -> input default_stmt .)
+    IMPLY           reduce using rule 13 (input -> input default_stmt .)
+    PROMPT          reduce using rule 13 (input -> input default_stmt .)
+    DEFAULT         reduce using rule 13 (input -> input default_stmt .)
+    DEF_BOOL        reduce using rule 13 (input -> input default_stmt .)
+    DEF_TRISTATE    reduce using rule 13 (input -> input default_stmt .)
+    HELP            reduce using rule 13 (input -> input default_stmt .)
+    RANGE           reduce using rule 13 (input -> input default_stmt .)
+    VISIBILE        reduce using rule 13 (input -> input default_stmt .)
+    MODULES         reduce using rule 13 (input -> input default_stmt .)
+    OPTIONAL        reduce using rule 13 (input -> input default_stmt .)
+    PATH            reduce using rule 13 (input -> input default_stmt .)
+    ENDPATH         reduce using rule 13 (input -> input default_stmt .)
+    $end            reduce using rule 13 (input -> input default_stmt .)
+
+
+state 16
+
+    (14) input -> input help_stmt .
+
+    MAINMENU        reduce using rule 14 (input -> input help_stmt .)
+    CONFIG          reduce using rule 14 (input -> input help_stmt .)
+    MENUCONFIG      reduce using rule 14 (input -> input help_stmt .)
+    MENU            reduce using rule 14 (input -> input help_stmt .)
+    IF              reduce using rule 14 (input -> input help_stmt .)
+    CHOICE          reduce using rule 14 (input -> input help_stmt .)
+    ENDMENU         reduce using rule 14 (input -> input help_stmt .)
+    ENDIF           reduce using rule 14 (input -> input help_stmt .)
+    ENDCHOICE       reduce using rule 14 (input -> input help_stmt .)
+    COMMENT         reduce using rule 14 (input -> input help_stmt .)
+    SOURCE          reduce using rule 14 (input -> input help_stmt .)
+    INT             reduce using rule 14 (input -> input help_stmt .)
+    HEX             reduce using rule 14 (input -> input help_stmt .)
+    STRING          reduce using rule 14 (input -> input help_stmt .)
+    BOOL            reduce using rule 14 (input -> input help_stmt .)
+    TRISTATE        reduce using rule 14 (input -> input help_stmt .)
+    DEPENDS         reduce using rule 14 (input -> input help_stmt .)
+    SELECT          reduce using rule 14 (input -> input help_stmt .)
+    IMPLY           reduce using rule 14 (input -> input help_stmt .)
+    PROMPT          reduce using rule 14 (input -> input help_stmt .)
+    DEFAULT         reduce using rule 14 (input -> input help_stmt .)
+    DEF_BOOL        reduce using rule 14 (input -> input help_stmt .)
+    DEF_TRISTATE    reduce using rule 14 (input -> input help_stmt .)
+    HELP            reduce using rule 14 (input -> input help_stmt .)
+    RANGE           reduce using rule 14 (input -> input help_stmt .)
+    VISIBILE        reduce using rule 14 (input -> input help_stmt .)
+    MODULES         reduce using rule 14 (input -> input help_stmt .)
+    OPTIONAL        reduce using rule 14 (input -> input help_stmt .)
+    PATH            reduce using rule 14 (input -> input help_stmt .)
+    ENDPATH         reduce using rule 14 (input -> input help_stmt .)
+    $end            reduce using rule 14 (input -> input help_stmt .)
+
+
+state 17
+
+    (15) input -> input range_stmt .
+
+    MAINMENU        reduce using rule 15 (input -> input range_stmt .)
+    CONFIG          reduce using rule 15 (input -> input range_stmt .)
+    MENUCONFIG      reduce using rule 15 (input -> input range_stmt .)
+    MENU            reduce using rule 15 (input -> input range_stmt .)
+    IF              reduce using rule 15 (input -> input range_stmt .)
+    CHOICE          reduce using rule 15 (input -> input range_stmt .)
+    ENDMENU         reduce using rule 15 (input -> input range_stmt .)
+    ENDIF           reduce using rule 15 (input -> input range_stmt .)
+    ENDCHOICE       reduce using rule 15 (input -> input range_stmt .)
+    COMMENT         reduce using rule 15 (input -> input range_stmt .)
+    SOURCE          reduce using rule 15 (input -> input range_stmt .)
+    INT             reduce using rule 15 (input -> input range_stmt .)
+    HEX             reduce using rule 15 (input -> input range_stmt .)
+    STRING          reduce using rule 15 (input -> input range_stmt .)
+    BOOL            reduce using rule 15 (input -> input range_stmt .)
+    TRISTATE        reduce using rule 15 (input -> input range_stmt .)
+    DEPENDS         reduce using rule 15 (input -> input range_stmt .)
+    SELECT          reduce using rule 15 (input -> input range_stmt .)
+    IMPLY           reduce using rule 15 (input -> input range_stmt .)
+    PROMPT          reduce using rule 15 (input -> input range_stmt .)
+    DEFAULT         reduce using rule 15 (input -> input range_stmt .)
+    DEF_BOOL        reduce using rule 15 (input -> input range_stmt .)
+    DEF_TRISTATE    reduce using rule 15 (input -> input range_stmt .)
+    HELP            reduce using rule 15 (input -> input range_stmt .)
+    RANGE           reduce using rule 15 (input -> input range_stmt .)
+    VISIBILE        reduce using rule 15 (input -> input range_stmt .)
+    MODULES         reduce using rule 15 (input -> input range_stmt .)
+    OPTIONAL        reduce using rule 15 (input -> input range_stmt .)
+    PATH            reduce using rule 15 (input -> input range_stmt .)
+    ENDPATH         reduce using rule 15 (input -> input range_stmt .)
+    $end            reduce using rule 15 (input -> input range_stmt .)
+
+
+state 18
+
+    (16) input -> input visible_stmt .
+
+    MAINMENU        reduce using rule 16 (input -> input visible_stmt .)
+    CONFIG          reduce using rule 16 (input -> input visible_stmt .)
+    MENUCONFIG      reduce using rule 16 (input -> input visible_stmt .)
+    MENU            reduce using rule 16 (input -> input visible_stmt .)
+    IF              reduce using rule 16 (input -> input visible_stmt .)
+    CHOICE          reduce using rule 16 (input -> input visible_stmt .)
+    ENDMENU         reduce using rule 16 (input -> input visible_stmt .)
+    ENDIF           reduce using rule 16 (input -> input visible_stmt .)
+    ENDCHOICE       reduce using rule 16 (input -> input visible_stmt .)
+    COMMENT         reduce using rule 16 (input -> input visible_stmt .)
+    SOURCE          reduce using rule 16 (input -> input visible_stmt .)
+    INT             reduce using rule 16 (input -> input visible_stmt .)
+    HEX             reduce using rule 16 (input -> input visible_stmt .)
+    STRING          reduce using rule 16 (input -> input visible_stmt .)
+    BOOL            reduce using rule 16 (input -> input visible_stmt .)
+    TRISTATE        reduce using rule 16 (input -> input visible_stmt .)
+    DEPENDS         reduce using rule 16 (input -> input visible_stmt .)
+    SELECT          reduce using rule 16 (input -> input visible_stmt .)
+    IMPLY           reduce using rule 16 (input -> input visible_stmt .)
+    PROMPT          reduce using rule 16 (input -> input visible_stmt .)
+    DEFAULT         reduce using rule 16 (input -> input visible_stmt .)
+    DEF_BOOL        reduce using rule 16 (input -> input visible_stmt .)
+    DEF_TRISTATE    reduce using rule 16 (input -> input visible_stmt .)
+    HELP            reduce using rule 16 (input -> input visible_stmt .)
+    RANGE           reduce using rule 16 (input -> input visible_stmt .)
+    VISIBILE        reduce using rule 16 (input -> input visible_stmt .)
+    MODULES         reduce using rule 16 (input -> input visible_stmt .)
+    OPTIONAL        reduce using rule 16 (input -> input visible_stmt .)
+    PATH            reduce using rule 16 (input -> input visible_stmt .)
+    ENDPATH         reduce using rule 16 (input -> input visible_stmt .)
+    $end            reduce using rule 16 (input -> input visible_stmt .)
+
+
+state 19
+
+    (17) input -> input modules_stmt .
+
+    MAINMENU        reduce using rule 17 (input -> input modules_stmt .)
+    CONFIG          reduce using rule 17 (input -> input modules_stmt .)
+    MENUCONFIG      reduce using rule 17 (input -> input modules_stmt .)
+    MENU            reduce using rule 17 (input -> input modules_stmt .)
+    IF              reduce using rule 17 (input -> input modules_stmt .)
+    CHOICE          reduce using rule 17 (input -> input modules_stmt .)
+    ENDMENU         reduce using rule 17 (input -> input modules_stmt .)
+    ENDIF           reduce using rule 17 (input -> input modules_stmt .)
+    ENDCHOICE       reduce using rule 17 (input -> input modules_stmt .)
+    COMMENT         reduce using rule 17 (input -> input modules_stmt .)
+    SOURCE          reduce using rule 17 (input -> input modules_stmt .)
+    INT             reduce using rule 17 (input -> input modules_stmt .)
+    HEX             reduce using rule 17 (input -> input modules_stmt .)
+    STRING          reduce using rule 17 (input -> input modules_stmt .)
+    BOOL            reduce using rule 17 (input -> input modules_stmt .)
+    TRISTATE        reduce using rule 17 (input -> input modules_stmt .)
+    DEPENDS         reduce using rule 17 (input -> input modules_stmt .)
+    SELECT          reduce using rule 17 (input -> input modules_stmt .)
+    IMPLY           reduce using rule 17 (input -> input modules_stmt .)
+    PROMPT          reduce using rule 17 (input -> input modules_stmt .)
+    DEFAULT         reduce using rule 17 (input -> input modules_stmt .)
+    DEF_BOOL        reduce using rule 17 (input -> input modules_stmt .)
+    DEF_TRISTATE    reduce using rule 17 (input -> input modules_stmt .)
+    HELP            reduce using rule 17 (input -> input modules_stmt .)
+    RANGE           reduce using rule 17 (input -> input modules_stmt .)
+    VISIBILE        reduce using rule 17 (input -> input modules_stmt .)
+    MODULES         reduce using rule 17 (input -> input modules_stmt .)
+    OPTIONAL        reduce using rule 17 (input -> input modules_stmt .)
+    PATH            reduce using rule 17 (input -> input modules_stmt .)
+    ENDPATH         reduce using rule 17 (input -> input modules_stmt .)
+    $end            reduce using rule 17 (input -> input modules_stmt .)
+
+
+state 20
+
+    (18) input -> input optional_stmt .
+
+    MAINMENU        reduce using rule 18 (input -> input optional_stmt .)
+    CONFIG          reduce using rule 18 (input -> input optional_stmt .)
+    MENUCONFIG      reduce using rule 18 (input -> input optional_stmt .)
+    MENU            reduce using rule 18 (input -> input optional_stmt .)
+    IF              reduce using rule 18 (input -> input optional_stmt .)
+    CHOICE          reduce using rule 18 (input -> input optional_stmt .)
+    ENDMENU         reduce using rule 18 (input -> input optional_stmt .)
+    ENDIF           reduce using rule 18 (input -> input optional_stmt .)
+    ENDCHOICE       reduce using rule 18 (input -> input optional_stmt .)
+    COMMENT         reduce using rule 18 (input -> input optional_stmt .)
+    SOURCE          reduce using rule 18 (input -> input optional_stmt .)
+    INT             reduce using rule 18 (input -> input optional_stmt .)
+    HEX             reduce using rule 18 (input -> input optional_stmt .)
+    STRING          reduce using rule 18 (input -> input optional_stmt .)
+    BOOL            reduce using rule 18 (input -> input optional_stmt .)
+    TRISTATE        reduce using rule 18 (input -> input optional_stmt .)
+    DEPENDS         reduce using rule 18 (input -> input optional_stmt .)
+    SELECT          reduce using rule 18 (input -> input optional_stmt .)
+    IMPLY           reduce using rule 18 (input -> input optional_stmt .)
+    PROMPT          reduce using rule 18 (input -> input optional_stmt .)
+    DEFAULT         reduce using rule 18 (input -> input optional_stmt .)
+    DEF_BOOL        reduce using rule 18 (input -> input optional_stmt .)
+    DEF_TRISTATE    reduce using rule 18 (input -> input optional_stmt .)
+    HELP            reduce using rule 18 (input -> input optional_stmt .)
+    RANGE           reduce using rule 18 (input -> input optional_stmt .)
+    VISIBILE        reduce using rule 18 (input -> input optional_stmt .)
+    MODULES         reduce using rule 18 (input -> input optional_stmt .)
+    OPTIONAL        reduce using rule 18 (input -> input optional_stmt .)
+    PATH            reduce using rule 18 (input -> input optional_stmt .)
+    ENDPATH         reduce using rule 18 (input -> input optional_stmt .)
+    $end            reduce using rule 18 (input -> input optional_stmt .)
+
+
+state 21
+
+    (19) input -> input path_stmt .
+
+    MAINMENU        reduce using rule 19 (input -> input path_stmt .)
+    CONFIG          reduce using rule 19 (input -> input path_stmt .)
+    MENUCONFIG      reduce using rule 19 (input -> input path_stmt .)
+    MENU            reduce using rule 19 (input -> input path_stmt .)
+    IF              reduce using rule 19 (input -> input path_stmt .)
+    CHOICE          reduce using rule 19 (input -> input path_stmt .)
+    ENDMENU         reduce using rule 19 (input -> input path_stmt .)
+    ENDIF           reduce using rule 19 (input -> input path_stmt .)
+    ENDCHOICE       reduce using rule 19 (input -> input path_stmt .)
+    COMMENT         reduce using rule 19 (input -> input path_stmt .)
+    SOURCE          reduce using rule 19 (input -> input path_stmt .)
+    INT             reduce using rule 19 (input -> input path_stmt .)
+    HEX             reduce using rule 19 (input -> input path_stmt .)
+    STRING          reduce using rule 19 (input -> input path_stmt .)
+    BOOL            reduce using rule 19 (input -> input path_stmt .)
+    TRISTATE        reduce using rule 19 (input -> input path_stmt .)
+    DEPENDS         reduce using rule 19 (input -> input path_stmt .)
+    SELECT          reduce using rule 19 (input -> input path_stmt .)
+    IMPLY           reduce using rule 19 (input -> input path_stmt .)
+    PROMPT          reduce using rule 19 (input -> input path_stmt .)
+    DEFAULT         reduce using rule 19 (input -> input path_stmt .)
+    DEF_BOOL        reduce using rule 19 (input -> input path_stmt .)
+    DEF_TRISTATE    reduce using rule 19 (input -> input path_stmt .)
+    HELP            reduce using rule 19 (input -> input path_stmt .)
+    RANGE           reduce using rule 19 (input -> input path_stmt .)
+    VISIBILE        reduce using rule 19 (input -> input path_stmt .)
+    MODULES         reduce using rule 19 (input -> input path_stmt .)
+    OPTIONAL        reduce using rule 19 (input -> input path_stmt .)
+    PATH            reduce using rule 19 (input -> input path_stmt .)
+    ENDPATH         reduce using rule 19 (input -> input path_stmt .)
+    $end            reduce using rule 19 (input -> input path_stmt .)
+
+
+state 22
+
+    (20) input -> input endpath_stmt .
+
+    MAINMENU        reduce using rule 20 (input -> input endpath_stmt .)
+    CONFIG          reduce using rule 20 (input -> input endpath_stmt .)
+    MENUCONFIG      reduce using rule 20 (input -> input endpath_stmt .)
+    MENU            reduce using rule 20 (input -> input endpath_stmt .)
+    IF              reduce using rule 20 (input -> input endpath_stmt .)
+    CHOICE          reduce using rule 20 (input -> input endpath_stmt .)
+    ENDMENU         reduce using rule 20 (input -> input endpath_stmt .)
+    ENDIF           reduce using rule 20 (input -> input endpath_stmt .)
+    ENDCHOICE       reduce using rule 20 (input -> input endpath_stmt .)
+    COMMENT         reduce using rule 20 (input -> input endpath_stmt .)
+    SOURCE          reduce using rule 20 (input -> input endpath_stmt .)
+    INT             reduce using rule 20 (input -> input endpath_stmt .)
+    HEX             reduce using rule 20 (input -> input endpath_stmt .)
+    STRING          reduce using rule 20 (input -> input endpath_stmt .)
+    BOOL            reduce using rule 20 (input -> input endpath_stmt .)
+    TRISTATE        reduce using rule 20 (input -> input endpath_stmt .)
+    DEPENDS         reduce using rule 20 (input -> input endpath_stmt .)
+    SELECT          reduce using rule 20 (input -> input endpath_stmt .)
+    IMPLY           reduce using rule 20 (input -> input endpath_stmt .)
+    PROMPT          reduce using rule 20 (input -> input endpath_stmt .)
+    DEFAULT         reduce using rule 20 (input -> input endpath_stmt .)
+    DEF_BOOL        reduce using rule 20 (input -> input endpath_stmt .)
+    DEF_TRISTATE    reduce using rule 20 (input -> input endpath_stmt .)
+    HELP            reduce using rule 20 (input -> input endpath_stmt .)
+    RANGE           reduce using rule 20 (input -> input endpath_stmt .)
+    VISIBILE        reduce using rule 20 (input -> input endpath_stmt .)
+    MODULES         reduce using rule 20 (input -> input endpath_stmt .)
+    OPTIONAL        reduce using rule 20 (input -> input endpath_stmt .)
+    PATH            reduce using rule 20 (input -> input endpath_stmt .)
+    ENDPATH         reduce using rule 20 (input -> input endpath_stmt .)
+    $end            reduce using rule 20 (input -> input endpath_stmt .)
+
+
+state 23
+
+    (24) mainmenu_stmt -> MAINMENU . QUOTE_WORD EOL
+
+    QUOTE_WORD      shift and go to state 53
+
+
+state 24
+
+    (25) config_stmt -> CONFIG . WORD EOL
+
+    WORD            shift and go to state 54
+
+
+state 25
+
+    (26) config_stmt -> MENUCONFIG . WORD EOL
+
+    WORD            shift and go to state 55
+
+
+state 26
+
+    (28) menu_stmt -> MENU . QUOTE_WORD EOL
+
+    QUOTE_WORD      shift and go to state 56
+
+
+state 27
+
+    (29) if_stmt -> IF . expr EOL
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 57
+    symbol                         shift and go to state 58
+
+state 28
+
+    (30) choice_stmt -> CHOICE . WORD EOL
+    (31) choice_stmt -> CHOICE . EOL
+
+    WORD            shift and go to state 64
+    EOL             shift and go to state 65
+
+
+state 29
+
+    (32) groupend_stmt -> ENDMENU . EOL
+
+    EOL             shift and go to state 66
+
+
+state 30
+
+    (33) groupend_stmt -> ENDIF . EOL
+
+    EOL             shift and go to state 67
+
+
+state 31
+
+    (34) groupend_stmt -> ENDCHOICE . EOL
+
+    EOL             shift and go to state 68
+
+
+state 32
+
+    (27) comment_stmt -> COMMENT . QUOTE_WORD EOL
+
+    QUOTE_WORD      shift and go to state 69
+
+
+state 33
+
+    (56) source_stmt -> SOURCE . QUOTE_WORD EOL
+
+    QUOTE_WORD      shift and go to state 70
+
+
+state 34
+
+    (37) type_stmt -> INT . prompt_stmt_opt EOL
+    (35) prompt_stmt_opt -> . QUOTE_WORD if_expr
+    (36) prompt_stmt_opt -> . empty
+    (73) empty -> .
+
+    QUOTE_WORD      shift and go to state 72
+    EOL             reduce using rule 73 (empty -> .)
+
+    prompt_stmt_opt                shift and go to state 71
+    empty                          shift and go to state 73
+
+state 35
+
+    (38) type_stmt -> HEX . prompt_stmt_opt EOL
+    (35) prompt_stmt_opt -> . QUOTE_WORD if_expr
+    (36) prompt_stmt_opt -> . empty
+    (73) empty -> .
+
+    QUOTE_WORD      shift and go to state 72
+    EOL             reduce using rule 73 (empty -> .)
+
+    prompt_stmt_opt                shift and go to state 74
+    empty                          shift and go to state 73
+
+state 36
+
+    (39) type_stmt -> STRING . prompt_stmt_opt EOL
+    (35) prompt_stmt_opt -> . QUOTE_WORD if_expr
+    (36) prompt_stmt_opt -> . empty
+    (73) empty -> .
+
+    QUOTE_WORD      shift and go to state 72
+    EOL             reduce using rule 73 (empty -> .)
+
+    prompt_stmt_opt                shift and go to state 75
+    empty                          shift and go to state 73
+
+state 37
+
+    (40) type_stmt -> BOOL . prompt_stmt_opt EOL
+    (35) prompt_stmt_opt -> . QUOTE_WORD if_expr
+    (36) prompt_stmt_opt -> . empty
+    (73) empty -> .
+
+    QUOTE_WORD      shift and go to state 72
+    EOL             reduce using rule 73 (empty -> .)
+
+    prompt_stmt_opt                shift and go to state 76
+    empty                          shift and go to state 73
+
+state 38
+
+    (41) type_stmt -> TRISTATE . prompt_stmt_opt EOL
+    (35) prompt_stmt_opt -> . QUOTE_WORD if_expr
+    (36) prompt_stmt_opt -> . empty
+    (73) empty -> .
+
+    QUOTE_WORD      shift and go to state 72
+    EOL             reduce using rule 73 (empty -> .)
+
+    prompt_stmt_opt                shift and go to state 77
+    empty                          shift and go to state 73
+
+state 39
+
+    (45) depends_stmt -> DEPENDS . ON expr EOL
+
+    ON              shift and go to state 78
+
+
+state 40
+
+    (46) select_imply_stmt -> SELECT . QUOTE_WORD if_expr EOL
+    (47) select_imply_stmt -> SELECT . WORD if_expr EOL
+
+    QUOTE_WORD      shift and go to state 79
+    WORD            shift and go to state 80
+
+
+state 41
+
+    (48) select_imply_stmt -> IMPLY . WORD if_expr EOL
+
+    WORD            shift and go to state 81
+
+
+state 42
+
+    (42) prompt_stmt -> PROMPT . QUOTE_WORD if_expr EOL
+
+    QUOTE_WORD      shift and go to state 82
+
+
+state 43
+
+    (51) default_stmt -> DEFAULT . expr if_expr EOL
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 83
+    symbol                         shift and go to state 58
+
+state 44
+
+    (52) default_stmt -> DEF_BOOL . expr if_expr EOL
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 84
+    symbol                         shift and go to state 58
+
+state 45
+
+    (53) default_stmt -> DEF_TRISTATE . expr if_expr EOL
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 85
+    symbol                         shift and go to state 58
+
+state 46
+
+    (43) help_stmt -> HELP . HELP_CONTEXT EOL
+    (44) help_stmt -> HELP . HELP_CONTEXT
+
+    HELP_CONTEXT    shift and go to state 86
+
+
+state 47
+
+    (49) range_stmt -> RANGE . symbol symbol if_expr EOL
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 87
+
+state 48
+
+    (54) visible_stmt -> VISIBILE . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 88
+    empty                          shift and go to state 90
+
+state 49
+
+    (55) modules_stmt -> MODULES . EOL
+
+    EOL             shift and go to state 91
+
+
+state 50
+
+    (50) optional_stmt -> OPTIONAL . EOL
+
+    EOL             shift and go to state 92
+
+
+state 51
+
+    (22) path_stmt -> PATH . QUOTE_WORD EOL
+
+    QUOTE_WORD      shift and go to state 93
+
+
+state 52
+
+    (23) endpath_stmt -> ENDPATH . EOL
+
+    EOL             shift and go to state 94
+
+
+state 53
+
+    (24) mainmenu_stmt -> MAINMENU QUOTE_WORD . EOL
+
+    EOL             shift and go to state 95
+
+
+state 54
+
+    (25) config_stmt -> CONFIG WORD . EOL
+
+    EOL             shift and go to state 96
+
+
+state 55
+
+    (26) config_stmt -> MENUCONFIG WORD . EOL
+
+    EOL             shift and go to state 97
+
+
+state 56
+
+    (28) menu_stmt -> MENU QUOTE_WORD . EOL
+
+    EOL             shift and go to state 98
+
+
+state 57
+
+    (29) if_stmt -> IF expr . EOL
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             shift and go to state 99
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+
+
+state 58
+
+    (62) expr -> symbol .
+    (63) expr -> symbol . LESS symbol
+    (64) expr -> symbol . LESS_EQUAL symbol
+    (65) expr -> symbol . GREATER symbol
+    (66) expr -> symbol . GREATER_EQUAL symbol
+    (67) expr -> symbol . EQUAL symbol
+    (68) expr -> symbol . UNEQUAL symbol
+
+    EOL             reduce using rule 62 (expr -> symbol .)
+    OR              reduce using rule 62 (expr -> symbol .)
+    AND             reduce using rule 62 (expr -> symbol .)
+    IF              reduce using rule 62 (expr -> symbol .)
+    CLOSE_PARENT    reduce using rule 62 (expr -> symbol .)
+    LESS            shift and go to state 102
+    LESS_EQUAL      shift and go to state 103
+    GREATER         shift and go to state 104
+    GREATER_EQUAL   shift and go to state 105
+    EQUAL           shift and go to state 106
+    UNEQUAL         shift and go to state 107
+
+
+state 59
+
+    (69) expr -> NOT . expr
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 108
+    symbol                         shift and go to state 58
+
+state 60
+
+    (70) expr -> OPEN_PARENT . expr CLOSE_PARENT
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 109
+    symbol                         shift and go to state 58
+
+state 61
+
+    (57) symbol -> WORD .
+
+    LESS            reduce using rule 57 (symbol -> WORD .)
+    LESS_EQUAL      reduce using rule 57 (symbol -> WORD .)
+    GREATER         reduce using rule 57 (symbol -> WORD .)
+    GREATER_EQUAL   reduce using rule 57 (symbol -> WORD .)
+    EQUAL           reduce using rule 57 (symbol -> WORD .)
+    UNEQUAL         reduce using rule 57 (symbol -> WORD .)
+    EOL             reduce using rule 57 (symbol -> WORD .)
+    OR              reduce using rule 57 (symbol -> WORD .)
+    AND             reduce using rule 57 (symbol -> WORD .)
+    IF              reduce using rule 57 (symbol -> WORD .)
+    WORD            reduce using rule 57 (symbol -> WORD .)
+    QUOTE_WORD      reduce using rule 57 (symbol -> WORD .)
+    SP_WORD         reduce using rule 57 (symbol -> WORD .)
+    CLOSE_PARENT    reduce using rule 57 (symbol -> WORD .)
+
+
+state 62
+
+    (58) symbol -> QUOTE_WORD .
+
+    LESS            reduce using rule 58 (symbol -> QUOTE_WORD .)
+    LESS_EQUAL      reduce using rule 58 (symbol -> QUOTE_WORD .)
+    GREATER         reduce using rule 58 (symbol -> QUOTE_WORD .)
+    GREATER_EQUAL   reduce using rule 58 (symbol -> QUOTE_WORD .)
+    EQUAL           reduce using rule 58 (symbol -> QUOTE_WORD .)
+    UNEQUAL         reduce using rule 58 (symbol -> QUOTE_WORD .)
+    EOL             reduce using rule 58 (symbol -> QUOTE_WORD .)
+    OR              reduce using rule 58 (symbol -> QUOTE_WORD .)
+    AND             reduce using rule 58 (symbol -> QUOTE_WORD .)
+    IF              reduce using rule 58 (symbol -> QUOTE_WORD .)
+    WORD            reduce using rule 58 (symbol -> QUOTE_WORD .)
+    QUOTE_WORD      reduce using rule 58 (symbol -> QUOTE_WORD .)
+    SP_WORD         reduce using rule 58 (symbol -> QUOTE_WORD .)
+    CLOSE_PARENT    reduce using rule 58 (symbol -> QUOTE_WORD .)
+
+
+state 63
+
+    (59) symbol -> SP_WORD .
+
+    LESS            reduce using rule 59 (symbol -> SP_WORD .)
+    LESS_EQUAL      reduce using rule 59 (symbol -> SP_WORD .)
+    GREATER         reduce using rule 59 (symbol -> SP_WORD .)
+    GREATER_EQUAL   reduce using rule 59 (symbol -> SP_WORD .)
+    EQUAL           reduce using rule 59 (symbol -> SP_WORD .)
+    UNEQUAL         reduce using rule 59 (symbol -> SP_WORD .)
+    EOL             reduce using rule 59 (symbol -> SP_WORD .)
+    OR              reduce using rule 59 (symbol -> SP_WORD .)
+    AND             reduce using rule 59 (symbol -> SP_WORD .)
+    IF              reduce using rule 59 (symbol -> SP_WORD .)
+    WORD            reduce using rule 59 (symbol -> SP_WORD .)
+    QUOTE_WORD      reduce using rule 59 (symbol -> SP_WORD .)
+    SP_WORD         reduce using rule 59 (symbol -> SP_WORD .)
+    CLOSE_PARENT    reduce using rule 59 (symbol -> SP_WORD .)
+
+
+state 64
+
+    (30) choice_stmt -> CHOICE WORD . EOL
+
+    EOL             shift and go to state 110
+
+
+state 65
+
+    (31) choice_stmt -> CHOICE EOL .
+
+    MAINMENU        reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    CONFIG          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    MENUCONFIG      reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    MENU            reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    IF              reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    CHOICE          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    ENDMENU         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    ENDIF           reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    ENDCHOICE       reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    COMMENT         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    SOURCE          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    INT             reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    HEX             reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    STRING          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    BOOL            reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    TRISTATE        reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    DEPENDS         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    SELECT          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    IMPLY           reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    PROMPT          reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    DEFAULT         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    DEF_BOOL        reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    DEF_TRISTATE    reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    HELP            reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    RANGE           reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    VISIBILE        reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    MODULES         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    OPTIONAL        reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    PATH            reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    ENDPATH         reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+    $end            reduce using rule 31 (choice_stmt -> CHOICE EOL .)
+
+
+state 66
+
+    (32) groupend_stmt -> ENDMENU EOL .
+
+    MAINMENU        reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    CONFIG          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    MENUCONFIG      reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    MENU            reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    IF              reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    CHOICE          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    ENDMENU         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    ENDIF           reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    ENDCHOICE       reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    COMMENT         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    SOURCE          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    INT             reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    HEX             reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    STRING          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    BOOL            reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    TRISTATE        reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    DEPENDS         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    SELECT          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    IMPLY           reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    PROMPT          reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    DEFAULT         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    DEF_BOOL        reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    DEF_TRISTATE    reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    HELP            reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    RANGE           reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    VISIBILE        reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    MODULES         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    OPTIONAL        reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    PATH            reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    ENDPATH         reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+    $end            reduce using rule 32 (groupend_stmt -> ENDMENU EOL .)
+
+
+state 67
+
+    (33) groupend_stmt -> ENDIF EOL .
+
+    MAINMENU        reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    CONFIG          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    MENUCONFIG      reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    MENU            reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    IF              reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    CHOICE          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    ENDMENU         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    ENDIF           reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    ENDCHOICE       reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    COMMENT         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    SOURCE          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    INT             reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    HEX             reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    STRING          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    BOOL            reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    TRISTATE        reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    DEPENDS         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    SELECT          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    IMPLY           reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    PROMPT          reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    DEFAULT         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    DEF_BOOL        reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    DEF_TRISTATE    reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    HELP            reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    RANGE           reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    VISIBILE        reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    MODULES         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    OPTIONAL        reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    PATH            reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    ENDPATH         reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+    $end            reduce using rule 33 (groupend_stmt -> ENDIF EOL .)
+
+
+state 68
+
+    (34) groupend_stmt -> ENDCHOICE EOL .
+
+    MAINMENU        reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    CONFIG          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    MENUCONFIG      reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    MENU            reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    IF              reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    CHOICE          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    ENDMENU         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    ENDIF           reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    ENDCHOICE       reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    COMMENT         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    SOURCE          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    INT             reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    HEX             reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    STRING          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    BOOL            reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    TRISTATE        reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    DEPENDS         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    SELECT          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    IMPLY           reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    PROMPT          reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    DEFAULT         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    DEF_BOOL        reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    DEF_TRISTATE    reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    HELP            reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    RANGE           reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    VISIBILE        reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    MODULES         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    OPTIONAL        reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    PATH            reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    ENDPATH         reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+    $end            reduce using rule 34 (groupend_stmt -> ENDCHOICE EOL .)
+
+
+state 69
+
+    (27) comment_stmt -> COMMENT QUOTE_WORD . EOL
+
+    EOL             shift and go to state 111
+
+
+state 70
+
+    (56) source_stmt -> SOURCE QUOTE_WORD . EOL
+
+    EOL             shift and go to state 112
+
+
+state 71
+
+    (37) type_stmt -> INT prompt_stmt_opt . EOL
+
+    EOL             shift and go to state 113
+
+
+state 72
+
+    (35) prompt_stmt_opt -> QUOTE_WORD . if_expr
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 114
+    empty                          shift and go to state 90
+
+state 73
+
+    (36) prompt_stmt_opt -> empty .
+
+    EOL             reduce using rule 36 (prompt_stmt_opt -> empty .)
+
+
+state 74
+
+    (38) type_stmt -> HEX prompt_stmt_opt . EOL
+
+    EOL             shift and go to state 115
+
+
+state 75
+
+    (39) type_stmt -> STRING prompt_stmt_opt . EOL
+
+    EOL             shift and go to state 116
+
+
+state 76
+
+    (40) type_stmt -> BOOL prompt_stmt_opt . EOL
+
+    EOL             shift and go to state 117
+
+
+state 77
+
+    (41) type_stmt -> TRISTATE prompt_stmt_opt . EOL
+
+    EOL             shift and go to state 118
+
+
+state 78
+
+    (45) depends_stmt -> DEPENDS ON . expr EOL
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 119
+    symbol                         shift and go to state 58
+
+state 79
+
+    (46) select_imply_stmt -> SELECT QUOTE_WORD . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 120
+    empty                          shift and go to state 90
+
+state 80
+
+    (47) select_imply_stmt -> SELECT WORD . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 121
+    empty                          shift and go to state 90
+
+state 81
+
+    (48) select_imply_stmt -> IMPLY WORD . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 122
+    empty                          shift and go to state 90
+
+state 82
+
+    (42) prompt_stmt -> PROMPT QUOTE_WORD . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 123
+    empty                          shift and go to state 90
+
+state 83
+
+    (51) default_stmt -> DEFAULT expr . if_expr EOL
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 124
+    empty                          shift and go to state 90
+
+state 84
+
+    (52) default_stmt -> DEF_BOOL expr . if_expr EOL
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 125
+    empty                          shift and go to state 90
+
+state 85
+
+    (53) default_stmt -> DEF_TRISTATE expr . if_expr EOL
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 126
+    empty                          shift and go to state 90
+
+state 86
+
+    (43) help_stmt -> HELP HELP_CONTEXT . EOL
+    (44) help_stmt -> HELP HELP_CONTEXT .
+
+    EOL             shift and go to state 127
+    MAINMENU        reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    CONFIG          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    MENUCONFIG      reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    MENU            reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    IF              reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    CHOICE          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    ENDMENU         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    ENDIF           reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    ENDCHOICE       reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    COMMENT         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    SOURCE          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    INT             reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    HEX             reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    STRING          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    BOOL            reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    TRISTATE        reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    DEPENDS         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    SELECT          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    IMPLY           reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    PROMPT          reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    DEFAULT         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    DEF_BOOL        reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    DEF_TRISTATE    reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    HELP            reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    RANGE           reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    VISIBILE        reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    MODULES         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    OPTIONAL        reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    PATH            reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    ENDPATH         reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+    $end            reduce using rule 44 (help_stmt -> HELP HELP_CONTEXT .)
+
+
+state 87
+
+    (49) range_stmt -> RANGE symbol . symbol if_expr EOL
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 128
+
+state 88
+
+    (54) visible_stmt -> VISIBILE if_expr . EOL
+
+    EOL             shift and go to state 129
+
+
+state 89
+
+    (60) if_expr -> IF . expr
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 130
+    symbol                         shift and go to state 58
+
+state 90
+
+    (61) if_expr -> empty .
+
+    EOL             reduce using rule 61 (if_expr -> empty .)
+
+
+state 91
+
+    (55) modules_stmt -> MODULES EOL .
+
+    MAINMENU        reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    CONFIG          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    MENUCONFIG      reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    MENU            reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    IF              reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    CHOICE          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    ENDMENU         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    ENDIF           reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    ENDCHOICE       reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    COMMENT         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    SOURCE          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    INT             reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    HEX             reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    STRING          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    BOOL            reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    TRISTATE        reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    DEPENDS         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    SELECT          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    IMPLY           reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    PROMPT          reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    DEFAULT         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    DEF_BOOL        reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    DEF_TRISTATE    reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    HELP            reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    RANGE           reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    VISIBILE        reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    MODULES         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    OPTIONAL        reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    PATH            reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    ENDPATH         reduce using rule 55 (modules_stmt -> MODULES EOL .)
+    $end            reduce using rule 55 (modules_stmt -> MODULES EOL .)
+
+
+state 92
+
+    (50) optional_stmt -> OPTIONAL EOL .
+
+    MAINMENU        reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    CONFIG          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    MENUCONFIG      reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    MENU            reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    IF              reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    CHOICE          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    ENDMENU         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    ENDIF           reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    ENDCHOICE       reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    COMMENT         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    SOURCE          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    INT             reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    HEX             reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    STRING          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    BOOL            reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    TRISTATE        reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    DEPENDS         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    SELECT          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    IMPLY           reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    PROMPT          reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    DEFAULT         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    DEF_BOOL        reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    DEF_TRISTATE    reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    HELP            reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    RANGE           reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    VISIBILE        reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    MODULES         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    OPTIONAL        reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    PATH            reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    ENDPATH         reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+    $end            reduce using rule 50 (optional_stmt -> OPTIONAL EOL .)
+
+
+state 93
+
+    (22) path_stmt -> PATH QUOTE_WORD . EOL
+
+    EOL             shift and go to state 131
+
+
+state 94
+
+    (23) endpath_stmt -> ENDPATH EOL .
+
+    MAINMENU        reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    CONFIG          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    MENUCONFIG      reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    MENU            reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    IF              reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    CHOICE          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    ENDMENU         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    ENDIF           reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    ENDCHOICE       reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    COMMENT         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    SOURCE          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    INT             reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    HEX             reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    STRING          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    BOOL            reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    TRISTATE        reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    DEPENDS         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    SELECT          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    IMPLY           reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    PROMPT          reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    DEFAULT         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    DEF_BOOL        reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    DEF_TRISTATE    reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    HELP            reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    RANGE           reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    VISIBILE        reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    MODULES         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    OPTIONAL        reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    PATH            reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    ENDPATH         reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+    $end            reduce using rule 23 (endpath_stmt -> ENDPATH EOL .)
+
+
+state 95
+
+    (24) mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .
+
+    MAINMENU        reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    CONFIG          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    MENUCONFIG      reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    MENU            reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    IF              reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    CHOICE          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    ENDMENU         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    ENDIF           reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    ENDCHOICE       reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    COMMENT         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    SOURCE          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    INT             reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    HEX             reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    STRING          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    BOOL            reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    TRISTATE        reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    DEPENDS         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    SELECT          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    IMPLY           reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    PROMPT          reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    DEFAULT         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    DEF_BOOL        reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    DEF_TRISTATE    reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    HELP            reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    RANGE           reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    VISIBILE        reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    MODULES         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    OPTIONAL        reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    PATH            reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    ENDPATH         reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+    $end            reduce using rule 24 (mainmenu_stmt -> MAINMENU QUOTE_WORD EOL .)
+
+
+state 96
+
+    (25) config_stmt -> CONFIG WORD EOL .
+
+    MAINMENU        reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    CONFIG          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    MENUCONFIG      reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    MENU            reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    IF              reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    CHOICE          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    ENDMENU         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    ENDIF           reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    ENDCHOICE       reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    COMMENT         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    SOURCE          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    INT             reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    HEX             reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    STRING          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    BOOL            reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    TRISTATE        reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    DEPENDS         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    SELECT          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    IMPLY           reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    PROMPT          reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    DEFAULT         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    DEF_BOOL        reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    DEF_TRISTATE    reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    HELP            reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    RANGE           reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    VISIBILE        reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    MODULES         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    OPTIONAL        reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    PATH            reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    ENDPATH         reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+    $end            reduce using rule 25 (config_stmt -> CONFIG WORD EOL .)
+
+
+state 97
+
+    (26) config_stmt -> MENUCONFIG WORD EOL .
+
+    MAINMENU        reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    CONFIG          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    MENUCONFIG      reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    MENU            reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    IF              reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    CHOICE          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    ENDMENU         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    ENDIF           reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    ENDCHOICE       reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    COMMENT         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    SOURCE          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    INT             reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    HEX             reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    STRING          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    BOOL            reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    TRISTATE        reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    DEPENDS         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    SELECT          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    IMPLY           reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    PROMPT          reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    DEFAULT         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    DEF_BOOL        reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    DEF_TRISTATE    reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    HELP            reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    RANGE           reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    VISIBILE        reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    MODULES         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    OPTIONAL        reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    PATH            reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    ENDPATH         reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+    $end            reduce using rule 26 (config_stmt -> MENUCONFIG WORD EOL .)
+
+
+state 98
+
+    (28) menu_stmt -> MENU QUOTE_WORD EOL .
+
+    MAINMENU        reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    CONFIG          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    MENUCONFIG      reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    MENU            reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    IF              reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    CHOICE          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    ENDMENU         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    ENDIF           reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    ENDCHOICE       reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    COMMENT         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    SOURCE          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    INT             reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    HEX             reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    STRING          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    BOOL            reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    TRISTATE        reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    DEPENDS         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    SELECT          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    IMPLY           reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    PROMPT          reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    DEFAULT         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    DEF_BOOL        reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    DEF_TRISTATE    reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    HELP            reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    RANGE           reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    VISIBILE        reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    MODULES         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    OPTIONAL        reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    PATH            reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    ENDPATH         reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+    $end            reduce using rule 28 (menu_stmt -> MENU QUOTE_WORD EOL .)
+
+
+state 99
+
+    (29) if_stmt -> IF expr EOL .
+
+    MAINMENU        reduce using rule 29 (if_stmt -> IF expr EOL .)
+    CONFIG          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    MENUCONFIG      reduce using rule 29 (if_stmt -> IF expr EOL .)
+    MENU            reduce using rule 29 (if_stmt -> IF expr EOL .)
+    IF              reduce using rule 29 (if_stmt -> IF expr EOL .)
+    CHOICE          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    ENDMENU         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    ENDIF           reduce using rule 29 (if_stmt -> IF expr EOL .)
+    ENDCHOICE       reduce using rule 29 (if_stmt -> IF expr EOL .)
+    COMMENT         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    SOURCE          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    INT             reduce using rule 29 (if_stmt -> IF expr EOL .)
+    HEX             reduce using rule 29 (if_stmt -> IF expr EOL .)
+    STRING          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    BOOL            reduce using rule 29 (if_stmt -> IF expr EOL .)
+    TRISTATE        reduce using rule 29 (if_stmt -> IF expr EOL .)
+    DEPENDS         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    SELECT          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    IMPLY           reduce using rule 29 (if_stmt -> IF expr EOL .)
+    PROMPT          reduce using rule 29 (if_stmt -> IF expr EOL .)
+    DEFAULT         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    DEF_BOOL        reduce using rule 29 (if_stmt -> IF expr EOL .)
+    DEF_TRISTATE    reduce using rule 29 (if_stmt -> IF expr EOL .)
+    HELP            reduce using rule 29 (if_stmt -> IF expr EOL .)
+    RANGE           reduce using rule 29 (if_stmt -> IF expr EOL .)
+    VISIBILE        reduce using rule 29 (if_stmt -> IF expr EOL .)
+    MODULES         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    OPTIONAL        reduce using rule 29 (if_stmt -> IF expr EOL .)
+    PATH            reduce using rule 29 (if_stmt -> IF expr EOL .)
+    ENDPATH         reduce using rule 29 (if_stmt -> IF expr EOL .)
+    $end            reduce using rule 29 (if_stmt -> IF expr EOL .)
+
+
+state 100
+
+    (71) expr -> expr OR . expr
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 132
+    symbol                         shift and go to state 58
+
+state 101
+
+    (72) expr -> expr AND . expr
+    (62) expr -> . symbol
+    (63) expr -> . symbol LESS symbol
+    (64) expr -> . symbol LESS_EQUAL symbol
+    (65) expr -> . symbol GREATER symbol
+    (66) expr -> . symbol GREATER_EQUAL symbol
+    (67) expr -> . symbol EQUAL symbol
+    (68) expr -> . symbol UNEQUAL symbol
+    (69) expr -> . NOT expr
+    (70) expr -> . OPEN_PARENT expr CLOSE_PARENT
+    (71) expr -> . expr OR expr
+    (72) expr -> . expr AND expr
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    NOT             shift and go to state 59
+    OPEN_PARENT     shift and go to state 60
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    expr                           shift and go to state 133
+    symbol                         shift and go to state 58
+
+state 102
+
+    (63) expr -> symbol LESS . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 134
+
+state 103
+
+    (64) expr -> symbol LESS_EQUAL . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 135
+
+state 104
+
+    (65) expr -> symbol GREATER . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 136
+
+state 105
+
+    (66) expr -> symbol GREATER_EQUAL . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 137
+
+state 106
+
+    (67) expr -> symbol EQUAL . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 138
+
+state 107
+
+    (68) expr -> symbol UNEQUAL . symbol
+    (57) symbol -> . WORD
+    (58) symbol -> . QUOTE_WORD
+    (59) symbol -> . SP_WORD
+
+    WORD            shift and go to state 61
+    QUOTE_WORD      shift and go to state 62
+    SP_WORD         shift and go to state 63
+
+    symbol                         shift and go to state 139
+
+state 108
+
+    (69) expr -> NOT expr .
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             reduce using rule 69 (expr -> NOT expr .)
+    OR              reduce using rule 69 (expr -> NOT expr .)
+    AND             reduce using rule 69 (expr -> NOT expr .)
+    IF              reduce using rule 69 (expr -> NOT expr .)
+    CLOSE_PARENT    reduce using rule 69 (expr -> NOT expr .)
+
+  ! OR              [ shift and go to state 100 ]
+  ! AND             [ shift and go to state 101 ]
+
+
+state 109
+
+    (70) expr -> OPEN_PARENT expr . CLOSE_PARENT
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    CLOSE_PARENT    shift and go to state 140
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+
+
+state 110
+
+    (30) choice_stmt -> CHOICE WORD EOL .
+
+    MAINMENU        reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    CONFIG          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    MENUCONFIG      reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    MENU            reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    IF              reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    CHOICE          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    ENDMENU         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    ENDIF           reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    ENDCHOICE       reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    COMMENT         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    SOURCE          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    INT             reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    HEX             reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    STRING          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    BOOL            reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    TRISTATE        reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    DEPENDS         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    SELECT          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    IMPLY           reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    PROMPT          reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    DEFAULT         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    DEF_BOOL        reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    DEF_TRISTATE    reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    HELP            reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    RANGE           reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    VISIBILE        reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    MODULES         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    OPTIONAL        reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    PATH            reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    ENDPATH         reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+    $end            reduce using rule 30 (choice_stmt -> CHOICE WORD EOL .)
+
+
+state 111
+
+    (27) comment_stmt -> COMMENT QUOTE_WORD EOL .
+
+    MAINMENU        reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    CONFIG          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    MENUCONFIG      reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    MENU            reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    IF              reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    CHOICE          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    ENDMENU         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    ENDIF           reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    ENDCHOICE       reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    COMMENT         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    SOURCE          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    INT             reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    HEX             reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    STRING          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    BOOL            reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    TRISTATE        reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    DEPENDS         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    SELECT          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    IMPLY           reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    PROMPT          reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    DEFAULT         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    DEF_BOOL        reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    DEF_TRISTATE    reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    HELP            reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    RANGE           reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    VISIBILE        reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    MODULES         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    OPTIONAL        reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    PATH            reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    ENDPATH         reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+    $end            reduce using rule 27 (comment_stmt -> COMMENT QUOTE_WORD EOL .)
+
+
+state 112
+
+    (56) source_stmt -> SOURCE QUOTE_WORD EOL .
+
+    MAINMENU        reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    CONFIG          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    MENUCONFIG      reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    MENU            reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    IF              reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    CHOICE          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    ENDMENU         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    ENDIF           reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    ENDCHOICE       reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    COMMENT         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    SOURCE          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    INT             reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    HEX             reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    STRING          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    BOOL            reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    TRISTATE        reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    DEPENDS         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    SELECT          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    IMPLY           reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    PROMPT          reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    DEFAULT         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    DEF_BOOL        reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    DEF_TRISTATE    reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    HELP            reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    RANGE           reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    VISIBILE        reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    MODULES         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    OPTIONAL        reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    PATH            reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    ENDPATH         reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+    $end            reduce using rule 56 (source_stmt -> SOURCE QUOTE_WORD EOL .)
+
+
+state 113
+
+    (37) type_stmt -> INT prompt_stmt_opt EOL .
+
+    MAINMENU        reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    CONFIG          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    MENUCONFIG      reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    MENU            reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    IF              reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    CHOICE          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    ENDMENU         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    ENDIF           reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    ENDCHOICE       reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    COMMENT         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    SOURCE          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    INT             reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    HEX             reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    STRING          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    BOOL            reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    TRISTATE        reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    DEPENDS         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    SELECT          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    IMPLY           reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    PROMPT          reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    DEFAULT         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    DEF_BOOL        reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    DEF_TRISTATE    reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    HELP            reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    RANGE           reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    VISIBILE        reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    MODULES         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    OPTIONAL        reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    PATH            reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    ENDPATH         reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+    $end            reduce using rule 37 (type_stmt -> INT prompt_stmt_opt EOL .)
+
+
+state 114
+
+    (35) prompt_stmt_opt -> QUOTE_WORD if_expr .
+
+    EOL             reduce using rule 35 (prompt_stmt_opt -> QUOTE_WORD if_expr .)
+
+
+state 115
+
+    (38) type_stmt -> HEX prompt_stmt_opt EOL .
+
+    MAINMENU        reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    CONFIG          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    MENUCONFIG      reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    MENU            reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    IF              reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    CHOICE          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    ENDMENU         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    ENDIF           reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    ENDCHOICE       reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    COMMENT         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    SOURCE          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    INT             reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    HEX             reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    STRING          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    BOOL            reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    TRISTATE        reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    DEPENDS         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    SELECT          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    IMPLY           reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    PROMPT          reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    DEFAULT         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    DEF_BOOL        reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    DEF_TRISTATE    reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    HELP            reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    RANGE           reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    VISIBILE        reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    MODULES         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    OPTIONAL        reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    PATH            reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    ENDPATH         reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+    $end            reduce using rule 38 (type_stmt -> HEX prompt_stmt_opt EOL .)
+
+
+state 116
+
+    (39) type_stmt -> STRING prompt_stmt_opt EOL .
+
+    MAINMENU        reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    CONFIG          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    MENUCONFIG      reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    MENU            reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    IF              reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    CHOICE          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    ENDMENU         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    ENDIF           reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    ENDCHOICE       reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    COMMENT         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    SOURCE          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    INT             reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    HEX             reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    STRING          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    BOOL            reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    TRISTATE        reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    DEPENDS         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    SELECT          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    IMPLY           reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    PROMPT          reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    DEFAULT         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    DEF_BOOL        reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    DEF_TRISTATE    reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    HELP            reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    RANGE           reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    VISIBILE        reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    MODULES         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    OPTIONAL        reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    PATH            reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    ENDPATH         reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+    $end            reduce using rule 39 (type_stmt -> STRING prompt_stmt_opt EOL .)
+
+
+state 117
+
+    (40) type_stmt -> BOOL prompt_stmt_opt EOL .
+
+    MAINMENU        reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    CONFIG          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    MENUCONFIG      reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    MENU            reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    IF              reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    CHOICE          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    ENDMENU         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    ENDIF           reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    ENDCHOICE       reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    COMMENT         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    SOURCE          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    INT             reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    HEX             reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    STRING          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    BOOL            reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    TRISTATE        reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    DEPENDS         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    SELECT          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    IMPLY           reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    PROMPT          reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    DEFAULT         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    DEF_BOOL        reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    DEF_TRISTATE    reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    HELP            reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    RANGE           reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    VISIBILE        reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    MODULES         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    OPTIONAL        reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    PATH            reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    ENDPATH         reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+    $end            reduce using rule 40 (type_stmt -> BOOL prompt_stmt_opt EOL .)
+
+
+state 118
+
+    (41) type_stmt -> TRISTATE prompt_stmt_opt EOL .
+
+    MAINMENU        reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    CONFIG          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    MENUCONFIG      reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    MENU            reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    IF              reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    CHOICE          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    ENDMENU         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    ENDIF           reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    ENDCHOICE       reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    COMMENT         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    SOURCE          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    INT             reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    HEX             reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    STRING          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    BOOL            reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    TRISTATE        reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    DEPENDS         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    SELECT          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    IMPLY           reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    PROMPT          reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    DEFAULT         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    DEF_BOOL        reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    DEF_TRISTATE    reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    HELP            reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    RANGE           reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    VISIBILE        reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    MODULES         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    OPTIONAL        reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    PATH            reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    ENDPATH         reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+    $end            reduce using rule 41 (type_stmt -> TRISTATE prompt_stmt_opt EOL .)
+
+
+state 119
+
+    (45) depends_stmt -> DEPENDS ON expr . EOL
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             shift and go to state 141
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+
+
+state 120
+
+    (46) select_imply_stmt -> SELECT QUOTE_WORD if_expr . EOL
+
+    EOL             shift and go to state 142
+
+
+state 121
+
+    (47) select_imply_stmt -> SELECT WORD if_expr . EOL
+
+    EOL             shift and go to state 143
+
+
+state 122
+
+    (48) select_imply_stmt -> IMPLY WORD if_expr . EOL
+
+    EOL             shift and go to state 144
+
+
+state 123
+
+    (42) prompt_stmt -> PROMPT QUOTE_WORD if_expr . EOL
+
+    EOL             shift and go to state 145
+
+
+state 124
+
+    (51) default_stmt -> DEFAULT expr if_expr . EOL
+
+    EOL             shift and go to state 146
+
+
+state 125
+
+    (52) default_stmt -> DEF_BOOL expr if_expr . EOL
+
+    EOL             shift and go to state 147
+
+
+state 126
+
+    (53) default_stmt -> DEF_TRISTATE expr if_expr . EOL
+
+    EOL             shift and go to state 148
+
+
+state 127
+
+    (43) help_stmt -> HELP HELP_CONTEXT EOL .
+
+    MAINMENU        reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    CONFIG          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    MENUCONFIG      reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    MENU            reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    IF              reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    CHOICE          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    ENDMENU         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    ENDIF           reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    ENDCHOICE       reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    COMMENT         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    SOURCE          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    INT             reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    HEX             reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    STRING          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    BOOL            reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    TRISTATE        reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    DEPENDS         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    SELECT          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    IMPLY           reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    PROMPT          reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    DEFAULT         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    DEF_BOOL        reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    DEF_TRISTATE    reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    HELP            reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    RANGE           reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    VISIBILE        reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    MODULES         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    OPTIONAL        reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    PATH            reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    ENDPATH         reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+    $end            reduce using rule 43 (help_stmt -> HELP HELP_CONTEXT EOL .)
+
+
+state 128
+
+    (49) range_stmt -> RANGE symbol symbol . if_expr EOL
+    (60) if_expr -> . IF expr
+    (61) if_expr -> . empty
+    (73) empty -> .
+
+    IF              shift and go to state 89
+    EOL             reduce using rule 73 (empty -> .)
+
+    if_expr                        shift and go to state 149
+    empty                          shift and go to state 90
+
+state 129
+
+    (54) visible_stmt -> VISIBILE if_expr EOL .
+
+    MAINMENU        reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    CONFIG          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    MENUCONFIG      reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    MENU            reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    IF              reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    CHOICE          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    ENDMENU         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    ENDIF           reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    ENDCHOICE       reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    COMMENT         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    SOURCE          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    INT             reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    HEX             reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    STRING          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    BOOL            reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    TRISTATE        reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    DEPENDS         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    SELECT          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    IMPLY           reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    PROMPT          reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    DEFAULT         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    DEF_BOOL        reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    HELP            reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    RANGE           reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    VISIBILE        reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    MODULES         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    OPTIONAL        reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    PATH            reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    ENDPATH         reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+    $end            reduce using rule 54 (visible_stmt -> VISIBILE if_expr EOL .)
+
+
+state 130
+
+    (60) if_expr -> IF expr .
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             reduce using rule 60 (if_expr -> IF expr .)
+    OR              shift and go to state 100
+    AND             shift and go to state 101
+
+
+state 131
+
+    (22) path_stmt -> PATH QUOTE_WORD EOL .
+
+    MAINMENU        reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    CONFIG          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    MENUCONFIG      reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    MENU            reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    IF              reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    CHOICE          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    ENDMENU         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    ENDIF           reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    ENDCHOICE       reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    COMMENT         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    SOURCE          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    INT             reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    HEX             reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    STRING          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    BOOL            reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    TRISTATE        reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    DEPENDS         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    SELECT          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    IMPLY           reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    PROMPT          reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    DEFAULT         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    DEF_BOOL        reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    DEF_TRISTATE    reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    HELP            reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    RANGE           reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    VISIBILE        reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    MODULES         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    OPTIONAL        reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    PATH            reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    ENDPATH         reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+    $end            reduce using rule 22 (path_stmt -> PATH QUOTE_WORD EOL .)
+
+
+state 132
+
+    (71) expr -> expr OR expr .
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             reduce using rule 71 (expr -> expr OR expr .)
+    OR              reduce using rule 71 (expr -> expr OR expr .)
+    IF              reduce using rule 71 (expr -> expr OR expr .)
+    CLOSE_PARENT    reduce using rule 71 (expr -> expr OR expr .)
+    AND             shift and go to state 101
+
+  ! AND             [ reduce using rule 71 (expr -> expr OR expr .) ]
+  ! OR              [ shift and go to state 100 ]
+
+
+state 133
+
+    (72) expr -> expr AND expr .
+    (71) expr -> expr . OR expr
+    (72) expr -> expr . AND expr
+
+    EOL             reduce using rule 72 (expr -> expr AND expr .)
+    OR              reduce using rule 72 (expr -> expr AND expr .)
+    AND             reduce using rule 72 (expr -> expr AND expr .)
+    IF              reduce using rule 72 (expr -> expr AND expr .)
+    CLOSE_PARENT    reduce using rule 72 (expr -> expr AND expr .)
+
+  ! OR              [ shift and go to state 100 ]
+  ! AND             [ shift and go to state 101 ]
+
+
+state 134
+
+    (63) expr -> symbol LESS symbol .
+
+    EOL             reduce using rule 63 (expr -> symbol LESS symbol .)
+    OR              reduce using rule 63 (expr -> symbol LESS symbol .)
+    AND             reduce using rule 63 (expr -> symbol LESS symbol .)
+    IF              reduce using rule 63 (expr -> symbol LESS symbol .)
+    CLOSE_PARENT    reduce using rule 63 (expr -> symbol LESS symbol .)
+
+
+state 135
+
+    (64) expr -> symbol LESS_EQUAL symbol .
+
+    EOL             reduce using rule 64 (expr -> symbol LESS_EQUAL symbol .)
+    OR              reduce using rule 64 (expr -> symbol LESS_EQUAL symbol .)
+    AND             reduce using rule 64 (expr -> symbol LESS_EQUAL symbol .)
+    IF              reduce using rule 64 (expr -> symbol LESS_EQUAL symbol .)
+    CLOSE_PARENT    reduce using rule 64 (expr -> symbol LESS_EQUAL symbol .)
+
+
+state 136
+
+    (65) expr -> symbol GREATER symbol .
+
+    EOL             reduce using rule 65 (expr -> symbol GREATER symbol .)
+    OR              reduce using rule 65 (expr -> symbol GREATER symbol .)
+    AND             reduce using rule 65 (expr -> symbol GREATER symbol .)
+    IF              reduce using rule 65 (expr -> symbol GREATER symbol .)
+    CLOSE_PARENT    reduce using rule 65 (expr -> symbol GREATER symbol .)
+
+
+state 137
+
+    (66) expr -> symbol GREATER_EQUAL symbol .
+
+    EOL             reduce using rule 66 (expr -> symbol GREATER_EQUAL symbol .)
+    OR              reduce using rule 66 (expr -> symbol GREATER_EQUAL symbol .)
+    AND             reduce using rule 66 (expr -> symbol GREATER_EQUAL symbol .)
+    IF              reduce using rule 66 (expr -> symbol GREATER_EQUAL symbol .)
+    CLOSE_PARENT    reduce using rule 66 (expr -> symbol GREATER_EQUAL symbol .)
+
+
+state 138
+
+    (67) expr -> symbol EQUAL symbol .
+
+    EOL             reduce using rule 67 (expr -> symbol EQUAL symbol .)
+    OR              reduce using rule 67 (expr -> symbol EQUAL symbol .)
+    AND             reduce using rule 67 (expr -> symbol EQUAL symbol .)
+    IF              reduce using rule 67 (expr -> symbol EQUAL symbol .)
+    CLOSE_PARENT    reduce using rule 67 (expr -> symbol EQUAL symbol .)
+
+
+state 139
+
+    (68) expr -> symbol UNEQUAL symbol .
+
+    EOL             reduce using rule 68 (expr -> symbol UNEQUAL symbol .)
+    OR              reduce using rule 68 (expr -> symbol UNEQUAL symbol .)
+    AND             reduce using rule 68 (expr -> symbol UNEQUAL symbol .)
+    IF              reduce using rule 68 (expr -> symbol UNEQUAL symbol .)
+    CLOSE_PARENT    reduce using rule 68 (expr -> symbol UNEQUAL symbol .)
+
+
+state 140
+
+    (70) expr -> OPEN_PARENT expr CLOSE_PARENT .
+
+    EOL             reduce using rule 70 (expr -> OPEN_PARENT expr CLOSE_PARENT .)
+    OR              reduce using rule 70 (expr -> OPEN_PARENT expr CLOSE_PARENT .)
+    AND             reduce using rule 70 (expr -> OPEN_PARENT expr CLOSE_PARENT .)
+    IF              reduce using rule 70 (expr -> OPEN_PARENT expr CLOSE_PARENT .)
+    CLOSE_PARENT    reduce using rule 70 (expr -> OPEN_PARENT expr CLOSE_PARENT .)
+
+
+state 141
+
+    (45) depends_stmt -> DEPENDS ON expr EOL .
+
+    MAINMENU        reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    CONFIG          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    MENUCONFIG      reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    MENU            reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    IF              reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    CHOICE          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    ENDMENU         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    ENDIF           reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    ENDCHOICE       reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    COMMENT         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    SOURCE          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    INT             reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    HEX             reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    STRING          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    BOOL            reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    TRISTATE        reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    DEPENDS         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    SELECT          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    IMPLY           reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    PROMPT          reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    DEFAULT         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    DEF_BOOL        reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    DEF_TRISTATE    reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    HELP            reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    RANGE           reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    VISIBILE        reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    MODULES         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    OPTIONAL        reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    PATH            reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    ENDPATH         reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+    $end            reduce using rule 45 (depends_stmt -> DEPENDS ON expr EOL .)
+
+
+state 142
+
+    (46) select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .
+
+    MAINMENU        reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    CONFIG          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    MENUCONFIG      reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    MENU            reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    IF              reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    CHOICE          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    ENDMENU         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    ENDIF           reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    ENDCHOICE       reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    COMMENT         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    SOURCE          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    INT             reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    HEX             reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    STRING          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    BOOL            reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    TRISTATE        reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    DEPENDS         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    SELECT          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    IMPLY           reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    PROMPT          reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    DEFAULT         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    DEF_BOOL        reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    HELP            reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    RANGE           reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    VISIBILE        reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    MODULES         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    OPTIONAL        reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    PATH            reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    ENDPATH         reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+    $end            reduce using rule 46 (select_imply_stmt -> SELECT QUOTE_WORD if_expr EOL .)
+
+
+state 143
+
+    (47) select_imply_stmt -> SELECT WORD if_expr EOL .
+
+    MAINMENU        reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    CONFIG          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    MENUCONFIG      reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    MENU            reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    IF              reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    CHOICE          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    ENDMENU         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    ENDIF           reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    ENDCHOICE       reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    COMMENT         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    SOURCE          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    INT             reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    HEX             reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    STRING          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    BOOL            reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    TRISTATE        reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    DEPENDS         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    SELECT          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    IMPLY           reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    PROMPT          reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    DEFAULT         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    DEF_BOOL        reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    HELP            reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    RANGE           reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    VISIBILE        reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    MODULES         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    OPTIONAL        reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    PATH            reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    ENDPATH         reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+    $end            reduce using rule 47 (select_imply_stmt -> SELECT WORD if_expr EOL .)
+
+
+state 144
+
+    (48) select_imply_stmt -> IMPLY WORD if_expr EOL .
+
+    MAINMENU        reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    CONFIG          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    MENUCONFIG      reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    MENU            reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    IF              reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    CHOICE          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    ENDMENU         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    ENDIF           reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    ENDCHOICE       reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    COMMENT         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    SOURCE          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    INT             reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    HEX             reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    STRING          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    BOOL            reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    TRISTATE        reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    DEPENDS         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    SELECT          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    IMPLY           reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    PROMPT          reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    DEFAULT         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    DEF_BOOL        reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    HELP            reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    RANGE           reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    VISIBILE        reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    MODULES         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    OPTIONAL        reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    PATH            reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    ENDPATH         reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+    $end            reduce using rule 48 (select_imply_stmt -> IMPLY WORD if_expr EOL .)
+
+
+state 145
+
+    (42) prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .
+
+    MAINMENU        reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    CONFIG          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    MENUCONFIG      reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    MENU            reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    IF              reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    CHOICE          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    ENDMENU         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    ENDIF           reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    ENDCHOICE       reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    COMMENT         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    SOURCE          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    INT             reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    HEX             reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    STRING          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    BOOL            reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    TRISTATE        reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    DEPENDS         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    SELECT          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    IMPLY           reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    PROMPT          reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    DEFAULT         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    DEF_BOOL        reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    HELP            reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    RANGE           reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    VISIBILE        reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    MODULES         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    OPTIONAL        reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    PATH            reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    ENDPATH         reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+    $end            reduce using rule 42 (prompt_stmt -> PROMPT QUOTE_WORD if_expr EOL .)
+
+
+state 146
+
+    (51) default_stmt -> DEFAULT expr if_expr EOL .
+
+    MAINMENU        reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    CONFIG          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    MENUCONFIG      reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    MENU            reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    IF              reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    CHOICE          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    ENDMENU         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    ENDIF           reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    ENDCHOICE       reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    COMMENT         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    SOURCE          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    INT             reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    HEX             reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    STRING          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    BOOL            reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    TRISTATE        reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    DEPENDS         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    SELECT          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    IMPLY           reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    PROMPT          reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    DEFAULT         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    DEF_BOOL        reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    HELP            reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    RANGE           reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    VISIBILE        reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    MODULES         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    OPTIONAL        reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    PATH            reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    ENDPATH         reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+    $end            reduce using rule 51 (default_stmt -> DEFAULT expr if_expr EOL .)
+
+
+state 147
+
+    (52) default_stmt -> DEF_BOOL expr if_expr EOL .
+
+    MAINMENU        reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    CONFIG          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    MENUCONFIG      reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    MENU            reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    IF              reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    CHOICE          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    ENDMENU         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    ENDIF           reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    ENDCHOICE       reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    COMMENT         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    SOURCE          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    INT             reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    HEX             reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    STRING          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    BOOL            reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    TRISTATE        reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    DEPENDS         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    SELECT          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    IMPLY           reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    PROMPT          reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    DEFAULT         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    DEF_BOOL        reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    HELP            reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    RANGE           reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    VISIBILE        reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    MODULES         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    OPTIONAL        reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    PATH            reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    ENDPATH         reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+    $end            reduce using rule 52 (default_stmt -> DEF_BOOL expr if_expr EOL .)
+
+
+state 148
+
+    (53) default_stmt -> DEF_TRISTATE expr if_expr EOL .
+
+    MAINMENU        reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    CONFIG          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    MENUCONFIG      reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    MENU            reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    IF              reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    CHOICE          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    ENDMENU         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    ENDIF           reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    ENDCHOICE       reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    COMMENT         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    SOURCE          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    INT             reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    HEX             reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    STRING          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    BOOL            reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    TRISTATE        reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    DEPENDS         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    SELECT          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    IMPLY           reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    PROMPT          reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    DEFAULT         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    DEF_BOOL        reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    HELP            reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    RANGE           reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    VISIBILE        reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    MODULES         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    OPTIONAL        reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    PATH            reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    ENDPATH         reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+    $end            reduce using rule 53 (default_stmt -> DEF_TRISTATE expr if_expr EOL .)
+
+
+state 149
+
+    (49) range_stmt -> RANGE symbol symbol if_expr . EOL
+
+    EOL             shift and go to state 150
+
+
+state 150
+
+    (49) range_stmt -> RANGE symbol symbol if_expr EOL .
+
+    MAINMENU        reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    CONFIG          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    MENUCONFIG      reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    MENU            reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    IF              reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    CHOICE          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    ENDMENU         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    ENDIF           reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    ENDCHOICE       reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    COMMENT         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    SOURCE          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    INT             reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    HEX             reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    STRING          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    BOOL            reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    TRISTATE        reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    DEPENDS         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    SELECT          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    IMPLY           reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    PROMPT          reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    DEFAULT         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    DEF_BOOL        reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    DEF_TRISTATE    reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    HELP            reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    RANGE           reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    VISIBILE        reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    MODULES         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    OPTIONAL        reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    PATH            reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    ENDPATH         reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+    $end            reduce using rule 49 (range_stmt -> RANGE symbol symbol if_expr EOL .)
+

@@ -1,0 +1,72 @@
+#!bin/bash
+# author by Li Lijuan
+# date 2023-04-17
+
+# Documents for comparison
+# find different configs in given files
+
+
+
+diffConfigsInAllFile() {
+    echo "Looking for configuration items that are different across all configuration files"
+    firstfileJudge=$1
+    for file in $@; do
+        comm -3 $firstfileJudge $file | sed 's/^\t//' >> "./result/tmp_diff_"$proType".log"
+    done
+
+    sort "./result/tmp_diff_"$proType".log" | uniq | sed 's/CONFIG_//' > "./result/diff_"$proType".log"
+}
+
+commConfigsInAllFile() {
+    echo "Looking for configuration items that are the same across all configuration files"
+    firstfileJudge=$1
+    for file in $@; do
+        comm -1 -2 $firstfileJudge $file | sed 's/^\t//' >> "./result/tmp_comm_"$proType".log"
+    done
+
+    sort "./result/tmp_comm_"$proType".log" | uniq | sed 's/CONFIG_//' > "./result/comm_"$proType".log"
+}
+
+saveIntHexChoiceConfigs() {
+    echo "save configs whose type is int, hex or choice"
+    for confs in $@; do
+        tmp="$(cat 1.json | grep -A 1 -m 1 "name: $confs," | head -n 2 | grep 'type' | sed 's/type: //g')"
+        if [ ! -n "$tmp" ]; then
+            echo "$confs" >> "./result/unfind_"$proType".log"
+        else
+            type="$(echo "$tmp" | sed 's/,//')"
+            if [[ "$type" == "int" ]] || [[ "$type" == "hex" ]]; then
+                echo "$confs" >> "./result/tmp_intHex_"$proType".log"
+            else 
+                echo "$confs" "$type" >> "./result/type_"$proType".log"
+            fi
+        fi
+    done
+
+    if [ -f "./result/tmp_intHex_"$proType".log" ]; then
+        cat "./result/tmp_intHex_"$proType".log" | sed 's/^/CONFIG_/g' > "./result/intHex_"$proType".log"
+    fi
+}
+
+mergeIntHex
+
+# set -e
+
+workdir="$(pwd)"
+
+# rm -rf "./result/*.log"
+proType=$1
+processFiles="$(ls $workdir/*$1.config)"
+echo "$processFiles"
+
+diffConfigsInAllFile $processFiles
+
+commConfigsInAllFile $processFiles
+
+
+CommLogFile="./result/comm_"$proType".log"
+configsIncommLogFile="$(cat $CommLogFile | sed 's/CONFIG_//')"
+
+cat *.json | sed 's/"//g' > 1.json
+
+saveIntHexChoiceConfigs $configsIncommLogFile

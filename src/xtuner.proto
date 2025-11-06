@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service Xtuner {
+  rpc UploadMetrics (UploadRequest) returns (UploadReply) {}
+  rpc PrintDebugMsg (DebugLogMsg) returns (google.protobuf.Empty) {}
+}
+
+message UploadRequest {
+  // metrics名称
+  repeated string keys = 1;
+  // metrics值内容
+  repeated string values = 2;
+  // 可调节项名称
+  repeated string tunnable = 3;
+  // 现有配置全部内容
+  string config = 4;
+  // 当前剩余训练次数（用于辨别训练轮次）
+  int32 counter = 5;
+  // the client's name or ip address
+  string hostName = 6;
+}
+
+message UploadReply {
+  string result = 1;
+}
+
+message DebugLogMsg {
+  // 当前剩余训练次数（用于辨别训练轮次）
+  int32 counter = 1;
+  // debug信息具体内容
+  string msg = 2;
+  // the client's name or ip address
+  string hostName = 3;
+}

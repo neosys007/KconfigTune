@@ -1,0 +1,5 @@
+grpc==1.0.0
+grpcio==1.49.1
+numpy==1.23.3
+protobuf==4.21.7
+scikit_learn==1.1.2

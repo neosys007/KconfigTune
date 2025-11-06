@@ -1,0 +1,2 @@
+Total Time: 2562.130925 seconds
+Scientific Notation: 2.5621e+03 seconds
